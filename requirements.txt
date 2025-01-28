@@ -1,0 +1,11 @@
+flask
+werkzeug
+torch
+transformers
+sentence-transformers
+spacy
+numpy
+spacy-transformers
+pypdf2
+pypdf
+thinc

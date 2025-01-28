@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for resume,score in ranked_resumes %}
+        <tr>
+            <td>{{ resume }}</td>
+            <td>{{ score }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

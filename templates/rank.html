@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align:center;">Welcome to the Ranking Page!</h1>
+        <hr>
+        <h5>Upload the job description and resume files and hit the <strong>Rank</strong> button to rank your resumes...</h5>
+        <br>
+        <form method=post enctype=multipart/form-data>
+            <div class="mb-3">
+                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
+                <input type=file class="form-control" name=job_description required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="resumes"><strong>Resume:</strong></label>
+                <input type=file class="form-control" name=resumes multiple required>  
+            </div>
+            <input type=submit class="btn btn-outline-primary" value=Rank style="align:center;">
+        </form>
+    </div>
+</div>
+{% endblock %}

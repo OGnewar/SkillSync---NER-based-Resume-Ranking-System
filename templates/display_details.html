@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Resume Details</h1>
+<div class="details">
+    <h2>{{ name }}</h2>
+    <p><strong>Skills:</strong> {{ resume_data.get('skills', 'Not Available') }}</p>
+    <p><strong>Experience:</strong> {{ resume_data.get('experience', 'Not Available') }}</p>
+    <p><strong>Education:</strong> {{ resume_data.get('education', 'Not Available') }}</p>
+    <p><strong>Language Proficiency:</strong> {{ resume_data.get('language', 'Not Available') }}</p>
+</div>
+<a href="{{ url_for('result') }}">Back to Results</a>
+{% endblock %}
