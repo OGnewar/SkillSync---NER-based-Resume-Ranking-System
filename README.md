@@ -40,3 +40,8 @@ python -m spacy download en_core_web_trf
 ```
 python app.py
 ```
+
+7. **Deactivate the virtual environment** after you're done with your work:
+```
+deactivate
+```
