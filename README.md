@@ -28,4 +28,15 @@ env/Scripts/activate
 pip install flask werkzeug torch transformers sentence-transformers spacy numpy spacy-transformers pypdf2 pypdf thinc
 ```
 
-4. 
+4. **Download the spaCy language model**:
+```
+python -m spacy download en_core_web_trf
+```
+
+5. **Download the models** from the link below and keep it in the assets folder of your local repository:
+[NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
+
+6. **Run the code** below to fire up the app:
+```
+python app.py
+```
