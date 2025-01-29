@@ -25,17 +25,37 @@ env/Scripts/activate
 
 3. **Install the necessary libraries and packages**:
 ```
-pip install flask
-pip install werkzeug
-pip install transformers
-pip install sentence-transformers
-pip install spacy
-pip install numpy
-pip install spacy-transformers
-pip install pypdf2
-pip install pypdf
-pip install torch
-pip install thinc
+pip install - U flask
+```
+```
+pip install -U werkzeug
+```
+```
+pip install -U transformers
+```
+```
+pip install -U sentence-transformers
+```
+```
+pip install -U spacy
+```
+```
+pip install -U numpy
+```
+```
+pip install -U spacy-transformers
+```
+```
+pip install -U pypdf2
+```
+```
+pip install -U pypdf
+```
+```
+pip install -U torch
+```
+```
+pip install -U thinc
 ```
 
 4. **Download the spaCy language model**:
