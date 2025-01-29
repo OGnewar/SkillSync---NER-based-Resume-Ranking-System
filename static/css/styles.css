@@ -1,0 +1,7 @@
+/* Fade animation only for the content */
+.fade-content {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+
