@@ -23,13 +23,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('intro')}}">Introduction <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url_for('intro')}}">Introduction<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('parse_res')}}">Parse Resume<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('parse_job')}}">Parse Job Description<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url_for('rank')}}">Rank <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('aboutUs')}}">About Us <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url_for('aboutUs')}}">About Us<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -38,5 +44,85 @@
     {% block content %}
 
     {% endblock %}
+    
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+        <!-- Right -->
+        <div>
+            <a href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System" class="me-4 text-reset"><img src="static/images/github.png" height=25px width="25px"></a>
+            <a href="https://www.google.com/" class="me-4 text-reset"><img src="static/images/google.png" height=25px width="25px"></a>
+            <a href="https://www.linkedin.com/home" class="me-4 text-reset"><img src="static/images/linkedin.png" height=25px width="25px"></a>
+            <a href="https://www.instagram.com/" class="me-4 text-reset"><img src="static/images/instagram.png" height=25px width="25px"></a>
+            <a href="https://x.com/?mx=2" class="me-4 text-reset"><img src="static/images/twitter.png" height=25px width="25px"></a>
+            <a href="https://www.youtube.com/" class="me-4 text-reset"><img src="static/images/youtube.png" height=25px width="25px"></a>
+        </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>SkillSync</h6>
+                <p>We provide you with an efficient tool to parse your resumes and job descriptions. Not only that, you can use our ranking system to compare and rank your resumes against a job description of your choosing.</p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
+                <p><a href="{{url_for('skillSync')}}" class="text-reset">What is it?</a></p>
+                <p><a href="{{url_for('intro')}}" class="text-reset">How does it work?</a></p>
+                <p><a href="https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-a-resume-with-examples" class="text-reset">How to write resumes?</a></p>
+                <p><a href="https://www.wright.edu/human-resources/writing-an-effective-job-description" class="text-reset">How to write job descriptions?</a></p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Our Features</h6>
+                <p><a href="{{url_for('parse_res')}}" class="text-reset">Parse Resumes</a></p>
+                <p><a href="{{url_for('parse_job')}}" class="text-reset">Parse Job Descriptions</a></p>
+                <p><a href="{{url_for('rank')}}" class="text-reset">Rank Resumes</a></p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                <p><img src="static/images/map.png" height="25px" width="20px" style="opacity:0.5;"> Lamachaur, Pokhara-16</p>
+                <p><a href="{{url_for('aboutUs')}}" class="text-reset" style="text-decoration:none;"><img src="static/images/page.png" height="20px" width="20px" style="opacity:0.5;"> About Us</a></p>
+                <p><img src="static/images/mail.png" height="20px" width="20px" style="opacity:0.5;">  sentake101@gmail.com</p>
+                <p><img src="static/images/phone.png" height="20px" width="20px" style="opacity:0.5;"> 9846123456</p>
+            <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2025 Copyright:
+        <a class="text-reset fw-bold" href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System">SkillSync</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </body>
 </html>
