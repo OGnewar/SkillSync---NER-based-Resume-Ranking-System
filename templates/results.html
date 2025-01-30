@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-
 <div class="container">
     <div class="jumbotron">
         <h1 style="text-align:center;">Ranked Resumes</h1>
@@ -12,13 +10,21 @@
                 <tr class="table-light">
                     <th scope="col">Name</th>
                     <th scope="col">Score</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for resume,score in ranked_resumes %}
+                {% for resume, score in ranked_resumes %}
                 <tr class="table-light">
                     <td>{{ resume[8:] }}</td>
                     <td>{{ "%.2f" | format(score * 100) }}</td>
+                    <td>
+                        <a href="{{ url_for('view_details', job_path=job_path, resume_path=resume, score=score) }}" 
+                        class="btn btn-outline-info btn-sm"
+                        target="_blank" rel="noopener noreferrer">
+                            View Details
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -27,5 +33,4 @@
         <a href="{{ url_for('rank') }}"><button type="button" class="btn btn-outline-primary btn-lg">Go Back</button></a>
     </div>
 </div>
-
 {% endblock %}
