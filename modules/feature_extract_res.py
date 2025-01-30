@@ -8,9 +8,9 @@ def res_extract_features(text):
 
     doc = res_ner_model(text)
     features = {
-        "skills": ", ".join(ent.text for ent in doc.ents if ent.label_ == "SKILLS"),
+        "skills": ", ".join(ent.text for ent in doc.ents if ent.label_ == "TOOLS"),
         "experience": ", ".join(ent.text for ent in doc.ents if ent.label_ == "EXPERIENCE"),
-        "education": ", ".join(ent.text for ent in doc.ents if ent.label_ == "EDUCATION"),
+        "education": ", ".join(ent.text for ent in doc.ents if ent.label_ == "EDUCATION_DEGREE"),
         "language": ", ".join(ent.text for ent in doc.ents if ent.label_ == "LANGUAGE"),
     }
     return features

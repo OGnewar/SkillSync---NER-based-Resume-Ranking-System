@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
-
+#sbert_model = SentenceTransformer('nli-roberta-base-v2') #fine-tuned sentiment-aware embeddings
 
 def calculate_similarity(job_features, resume_features):
 
