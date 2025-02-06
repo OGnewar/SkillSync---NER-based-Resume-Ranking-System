@@ -77,22 +77,22 @@ python -m spacy download en_core_web_trf
 
 6. **Obtain your OAuth Credentials**
 
-- Create a new project
-- Go to APIs & Services > Library
-- Enable Google+ API
-- Go to APIs & Services > Credentials
-- Click Create Credentials > OAuth Client ID
-- Select Application Type
-- Name your client
-- Add Authorized JavaScript Origins as:
-```
-http://localhost:5000
-```
-- Add Authorized redirect URLs
-```
-http://127.0.0.1:5000/login/callback
-```
-- Download the json file containing your client id and secret
+    - Create a new project
+    - Go to APIs & Services > Library
+    - Enable Google+ API
+    - Go to APIs & Services > Credentials
+    - Click Create Credentials > OAuth Client ID
+    - Select Application Type
+    - Name your client
+    - Add Authorized JavaScript Origins as:
+    ```
+    http://localhost:5000
+    ```
+    - Add Authorized redirect URLs
+    ```
+    http://127.0.0.1:5000/login/callback
+    ```
+    - Download the json file containing your client id and secret
 
 6. **Run the code** below to fire up the app:
 ```
