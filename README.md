@@ -18,13 +18,15 @@ This guide is to help you set this app up.
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
 
+
 2. **<ins>Set up a virtual environment</ins>** on your device and <ins>**activate it**</ins>:
 ```
 python -m venv env
 env/Scripts/activate
 ```
 
-3. **Install the necessary libraries and packages**:
+
+3. **<ins>Install the necessary libraries and packages</ins>**:
 ```
 python -m pip install --upgrade pip
 ```
@@ -69,22 +71,27 @@ pip install Flask-Login Flask-Session Authlib
 pip install python-dotenv
 ```
 
-4. **Download the spaCy language model**:
+
+4. **<ins>Download the spaCy language model</ins>**:
 ```
 python -m spacy download en_core_web_trf
 ```
 
-5. **Download the models** from the link below and keep it in the assets folder of your local repository:
+
+5. **<ins>Download the models</ins>** from the link below and keep it in the assets folder of your local repository:
 [NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
 
-6. **If you want to run the app with the login with google feature, follow from step 8; else go to step 7**
 
-7. **Go to base.html and remove or comment out from line 46 to line 50** and run the command:
+6. **<ins>If you want to run the app with the login with google feature, follow from step 8; else go to step 7</ins>**
+
+
+7. **<ins>Go to base.html and remove or comment out from line 46 to line 50</ins>** and run the command:
 ```
 python app_no_login.py
 ```
 
-8. **Obtain your OAuth Credentials**
+
+8. **<ins>Obtain your OAuth Credentials</ins>**
 
     - Create a new project
     - Go to APIs & Services > Library
@@ -103,25 +110,29 @@ python app_no_login.py
     ```
     - Download the json file containing your client id and secret
 
-9. **Create a .env file in your local directory** and place your client id and secret:
+
+9. **<ins>Create a .env file in your local directory</ins>** and place your client id and secret:
 ```
 GOOGLE_CLIENT_ID=your_client_id
 GOOGLE_CLIENT_SECRET=your_client-secret
 SECRET_KEY=your_secret_key
 ```
 
-10. **Load the keys from .env file** placing it in your app.py:
+
+10. **<ins>Load the keys from .env file</ins>** placing it in your app.py:
 ```
 from dotenv import load_dotenv
 load_dotenv()
 ```
 
-11. **Run the code** below to fire up the app:
+
+11. **<ins>Run the code</ins>** below to fire up the app:
 ```
 python app.py
 ```
 
-12. **Deactivate the virtual environment** after you're done with your work:
+
+12. **<ins>Deactivate the virtual environment</ins>** after you're done with your work:
 ```
 deactivate
 ```
