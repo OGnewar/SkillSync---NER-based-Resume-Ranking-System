@@ -22,7 +22,7 @@ This guide is to help you set this app up.
 
 <br>
 
-### 1.  Clone the Repository
+### 1. <tab>Clone the Repository
 ```
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
@@ -79,8 +79,9 @@ pip install Flask-Login Flask-Session Authlib
 pip install python-dotenv
 ```
 
+<br>
 
-4. **<ins>Download the spaCy language model</ins>**:
+### 4.  Download the spaCy language model</ins>**:
 ```
 python -m spacy download en_core_web_trf
 ```
