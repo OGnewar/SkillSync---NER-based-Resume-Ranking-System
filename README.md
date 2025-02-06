@@ -146,20 +146,28 @@ SECRET_KEY=your_secret_key
 ```
 <br>
 
-10. **<ins>Load the keys from .env file</ins>** placing it in your app.py:
+### 10. Load the Env Files:
+
+Load the keys from .env file placing it in your app.py:
 ```
 from dotenv import load_dotenv
 load_dotenv()
 ```
 
+<br>
 
-11. **<ins>Run the code</ins>** below to fire up the app:
+### 11. Run the App:
+
+Run the code below to fire up the app:
 ```
 python app.py
 ```
 
+<br>
 
-12. **<ins>Deactivate the virtual environment</ins>** after you're done with your work:
+### 12. Deactivate the Virtual Environment:
+
+Deactivate the virtual environment after you're done with your work:
 ```
 deactivate
 ```
