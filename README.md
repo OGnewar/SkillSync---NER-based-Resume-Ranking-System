@@ -135,7 +135,10 @@ http://127.0.0.1:5000/login/callback
 
 <br>
 
-### 9. **<ins>Create a .env file in your local directory</ins>** and place your client id and secret:
+## With Login
+### 9. Add Environment Variables:
+
+Create a .env file in your local directory and place your client id and secret:
 ```
 GOOGLE_CLIENT_ID=your_client_id
 GOOGLE_CLIENT_SECRET=your_client-secret
