@@ -60,6 +60,7 @@ pip install -U torch
 ```
 pip install -U thinc
 ```
+> You can ignore the two commands below if you're planning to run the app without login with google feature
 ```
 pip install Flask-Login Flask-Session Authlib
 ```
@@ -77,7 +78,10 @@ python -m spacy download en_core_web_trf
 
 6. **If you want to run the app with the login with google feature, follow from step 8; else go to step 7**
 
-7. **Go to base.html and remove or comment out from line 46 to line 50** and run the **app_no_login.py** file
+7. **Go to base.html and remove or comment out from line 46 to line 50** and run the command:
+```
+python app_no_login.py
+```
 
 8. **Obtain your OAuth Credentials**
 
