@@ -104,21 +104,25 @@ If you want to run the app with the login with google feature, follow from step 
 
 <br>
 
-7. **<ins>Go to base.html and remove or comment out from line 46 to line 50</ins>** and run the command:
+### 7. No Login:
+
+Go to base.html and remove or comment out from line 46 to line 50 and run the command:
 ```
 python app_no_login.py
 ```
 
+<br>
 
-8. **<ins>Obtain your OAuth Credentials</ins>**
+### 8. Obtain your OAuth Credentials:
 
-    - Create a new project
+    - Go to the Google Cloud Console website.
+    - Create a new project.
     - Go to APIs & Services > Library
-    - Enable Google+ API
+    - Enable Google+ API.
     - Go to APIs & Services > Credentials
     - Click Create Credentials > OAuth Client ID
-    - Select Application Type
-    - Name your client
+    - Select Application Type.
+    - Name your client.
     - Add Authorized JavaScript Origins as:
     ```
     http://localhost:5000
