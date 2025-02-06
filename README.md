@@ -25,6 +25,9 @@ env/Scripts/activate
 
 3. **Install the necessary libraries and packages**:
 ```
+python -m pip install --upgrade pip
+```
+```
 pip install - U flask
 ```
 ```
@@ -57,6 +60,12 @@ pip install -U torch
 ```
 pip install -U thinc
 ```
+```
+pip install Flask-Login Flask-Session Authlib
+```
+```
+pip install python-dotenv
+```
 
 4. **Download the spaCy language model**:
 ```
@@ -65,6 +74,25 @@ python -m spacy download en_core_web_trf
 
 5. **Download the models** from the link below and keep it in the assets folder of your local repository:
 [NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
+
+6. **Obtain your OAuth Credentials**
+
+- Create a new project
+- Go to APIs & Services > Library
+- Enable Google+ API
+- Go to APIs & Services > Credentials
+- Click Create Credentials > OAuth Client ID
+- Select Application Type
+- Name your client
+- Add Authorized JavaScript Origins as:
+```
+http://localhost:5000
+```
+- Add Authorized redirect URLs
+```
+http://127.0.0.1:5000/login/callback
+```
+- Download the json file containing your client id and secret
 
 6. **Run the code** below to fire up the app:
 ```
