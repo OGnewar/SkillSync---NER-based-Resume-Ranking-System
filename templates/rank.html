@@ -4,8 +4,11 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        <img src="static/images/ranking.png" height="50px" style="display: block; margin: auto;">
+        <br>
         <h1 style="text-align:center;">Welcome to the Ranking Page!</h1>
         <hr>
+        <br>
         <h5>Upload the job description and resume files and hit the <strong>Rank</strong> button to rank your resumes...</h5>
         <br>
         <form method=post enctype=multipart/form-data>
@@ -18,7 +21,7 @@
                 <input type=file class="form-control" name=resumes multiple required>  
             </div>
             <br>
-            <input type=submit class="btn btn-outline-primary btn-lg" value=Rank style="align:center;">
+            <input type=submit class="btn btn-outline-dark btn-lg" value=Rank style="align:center;">
         </form>
     </div>
 </div>

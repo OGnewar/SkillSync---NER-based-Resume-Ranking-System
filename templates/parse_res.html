@@ -3,17 +3,21 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        <img src="static/images/resume.png" height="50px" style="display: block; margin: auto;">
+        <br>
         <h1 style="text-align:center;">Welcome to the Resume Parsing Page!</h1>
         <hr>
+        <br>
         <h5>Upload a <strong>Resume</strong> and hit the <strong>Parse</strong> button to parse your resume...</h5>
         <br>
+        
         <form action="{{ url_for('parse_res') }}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label" for="resume"><strong>Resume:</strong></label>
                 <input type="file" class="form-control" name="resume" accept=".pdf" required>
             </div>
             <br>
-            <input type=submit class="btn btn-outline-primary btn-lg" value=Parse>
+            <input type=submit class="btn btn-outline-dark btn-lg" value=Parse>
         </form>
     </div>
 </div>

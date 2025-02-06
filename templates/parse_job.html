@@ -3,8 +3,11 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        <img src="static/images/suitcase.png" height="50px" style="display: block; margin: auto;">
+        <br>
         <h1 style="text-align:center;">Welcome to the Job Description Parsing Page!</h1>
         <hr>
+        <br>
         <h5>Upload a <strong>Job Description</strong> and hit the <strong>Parse</strong> button to parse your job description...</h5>
         <br>
         <form action="{{ url_for('parse_job') }}" method="post" enctype="multipart/form-data">
@@ -13,7 +16,7 @@
                 <input type="file" class="form-control" name="job_description" accept=".pdf" required>
             </div>
             <br>
-            <input type=submit class="btn btn-outline-primary btn-lg" value=Parse style="align:center;">
+            <input type=submit class="btn btn-outline-dark btn-lg" value=Parse style="align:center;">
         </form>
     </div>
 </div>

@@ -3,8 +3,11 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        <img src="static/images/resume.png" height="50px" style="display: block; margin: auto;">
+        <br>
         <h1 style="text-align:center;">Parsed Resume Details</h1>
         <hr>
+        <br>
         <table class="table table-hover table-striped">
             <thead>
                 <tr class="table-light">
@@ -36,7 +39,7 @@
             </tbody>
         </table>
         <br>
-        <a href="{{ url_for('parse_res') }}"><button type="button" class="btn btn-outline-primary btn-lg">Go Back</button></a>
+        <a href="{{ url_for('parse_res') }}"><button type="button" class="btn btn-outline-dark btn-lg">Go Back</button></a>
     </div>
 </div>
 {% endblock %}

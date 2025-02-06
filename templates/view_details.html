@@ -3,13 +3,16 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
+        <img src="static/images/information.png" height="50px" style="display: block; margin: auto;">
+        <br>
         <h1 class="text-center">Job & Resume Details</h1>
         <hr>
-
+        <br>
         <div class="row">
             <!-- Job Details Table -->
             <div class="col-md-6">
-                <h3>Job Description Details</h3>
+                <h3 class="text-center">Job Description Details</h3>
+                <br>
                 <table class="table table-hover table-striped">
                     <tr class="table-light"><th>Job Title</th><td>{{ job_features.get("name", "Unknown") }}</td></tr>
                     <tr class="table-light"><th>Skills</th><td>{{ job_features.get("skills", "Not Available") }}</td></tr>
@@ -21,7 +24,8 @@
 
             <!-- Resume Details Table -->
             <div class="col-md-6">
-                <h3>Resume Details</h3>
+                <h3 class="text-center">Resume Details</h3>
+                <br>
                 <table class="table table-hover table-striped">
                     <tr class="table-light"><th>Name</th><td>{{ resume_features.get("name", "Unknown") }}</td></tr>
                     <tr class="table-light"><th>Skills</th><td>{{ resume_features.get("skills", "Not Available") }}</td></tr>
@@ -32,9 +36,9 @@
             </div>
         </div>
 
-        <hr>
+        <br>
         <!-- Display Similarity Score -->
-        <div class="alert alert-info text-center">
+        <div class="alert alert-secondary text-center">
             <h4>Similarity Score: <strong>{{ "%.2f" | format(similarity_score * 100) }}%</strong></h4>
         </div>
 
