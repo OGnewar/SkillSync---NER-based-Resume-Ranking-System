@@ -1,4 +1,5 @@
 env/
 assets/JD_Model/
 assets/Res_Model/
-clientSecret
+clientSecret.json
+.env
