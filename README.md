@@ -22,14 +22,14 @@ This guide is to help you set this app up.
 
 <br>
 
-### 1. <ins>Clone the Repository</ins>
+### 1. Clone the Repository:
 ```
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
 
 <br>
 
-### 2.  Set and Activate the Virtual Environment
+### 2.  Set and Activate the Virtual Environment:
 ```
 python -m venv env
 env/Scripts/activate
@@ -37,7 +37,7 @@ env/Scripts/activate
 
 <br>
 
-### 3.  Install the Packages
+### 3.  Install the Packages:
 ```
 python -m pip install --upgrade pip
 ```
@@ -81,18 +81,28 @@ pip install python-dotenv
 
 <br>
 
-### 4.  Download the spaCy language model</ins>**:
+### 4.  Download the spaCy language model:
 ```
 python -m spacy download en_core_web_trf
 ```
 
+<br>
 
-5. **<ins>Download the models</ins>** from the link below and keep it in the assets folder of your local repository:
+### 5. Setup the Custom NER Model:
+
+Download the models from the link below and keep it in the assets folder of your local repository:
+
+<br>
+
 [NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
 
+<br>
 
-6. **<ins>If you want to run the app with the login with google feature, follow from step 8; else go to step 7</ins>**
+### 6. Login or No Login?
 
+If you want to run the app with the login with google feature, follow from step 8 onwards; else go to step 7.
+
+<br>
 
 7. **<ins>Go to base.html and remove or comment out from line 46 to line 50</ins>** and run the command:
 ```
