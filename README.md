@@ -115,32 +115,33 @@ python app_no_login.py
 
 ### 8. Obtain your OAuth Credentials:
 
-    - Go to the Google Cloud Console website.
-    - Create a new project.
-    - Go to APIs & Services > Library
-    - Enable Google+ API.
-    - Go to APIs & Services > Credentials
-    - Click Create Credentials > OAuth Client ID
-    - Select Application Type.
-    - Name your client.
-    - Add Authorized JavaScript Origins as:
-    ```
-    http://localhost:5000
-    ```
-    - Add Authorized redirect URLs
-    ```
-    http://127.0.0.1:5000/login/callback
-    ```
-    - Download the json file containing your client id and secret
+- Go to the Google Cloud Console website.
+- Create a new project.
+- Go to APIs & Services > Library
+- Enable Google+ API.
+- Go to APIs & Services > Credentials
+- Click Create Credentials > OAuth Client ID
+- Select Application Type.
+- Name your client.
+- Add Authorized JavaScript Origins as:
+```
+http://localhost:5000
+```
+- Add Authorized redirect URLs
+```
+http://127.0.0.1:5000/login/callback
+```
+- Download the json file containing your client id and secret
 
+<br>
 
-9. **<ins>Create a .env file in your local directory</ins>** and place your client id and secret:
+### 9. **<ins>Create a .env file in your local directory</ins>** and place your client id and secret:
 ```
 GOOGLE_CLIENT_ID=your_client_id
 GOOGLE_CLIENT_SECRET=your_client-secret
 SECRET_KEY=your_secret_key
 ```
-
+<br>
 
 10. **<ins>Load the keys from .env file</ins>** placing it in your app.py:
 ```
