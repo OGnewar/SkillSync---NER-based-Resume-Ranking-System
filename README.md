@@ -75,7 +75,11 @@ python -m spacy download en_core_web_trf
 5. **Download the models** from the link below and keep it in the assets folder of your local repository:
 [NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
 
-6. **Obtain your OAuth Credentials**
+6. **If you want to run the app with the login with google feature, follow from step 8; else go to step 7**
+
+7. **Go to base.html and remove or comment out from line 46 to line 50** and run the **app_no_login.py** file
+
+8. **Obtain your OAuth Credentials**
 
     - Create a new project
     - Go to APIs & Services > Library
@@ -94,25 +98,25 @@ python -m spacy download en_core_web_trf
     ```
     - Download the json file containing your client id and secret
 
-7. **Create a .env file in your local directory** and place your client id and secret:
+9. **Create a .env file in your local directory** and place your client id and secret:
 ```
 GOOGLE_CLIENT_ID=your_client_id
 GOOGLE_CLIENT_SECRET=your_client-secret
 SECRET_KEY=your_secret_key
 ```
 
-8. **Load the keys from .env file** placing it in your app.py:
+10. **Load the keys from .env file** placing it in your app.py:
 ```
 from dotenv import load_dotenv
 load_dotenv()
 ```
 
-9. **Run the code** below to fire up the app:
+11. **Run the code** below to fire up the app:
 ```
 python app.py
 ```
 
-10. **Deactivate the virtual environment** after you're done with your work:
+12. **Deactivate the virtual environment** after you're done with your work:
 ```
 deactivate
 ```
