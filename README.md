@@ -1,7 +1,9 @@
 # SkillSync---NER-based-Resume-Ranking-System
+
 <br>
 
 ## Major Project - PASBCT077
+
 <br>
 
 This project was created by:
@@ -9,11 +11,15 @@ This project was created by:
 - [Saujanya Shrestha (PAS077BCT036)](https://github.com/OGnewar)
 - [Dipak Poudel      (PAS077BCT019)](https://github.com/Dipak-Poudel-10)
 - [Anish Dahal       (PAS077BCT005)](https://github.com/anish77777)
+
 <br>
 
 ## Setup Guide
 
+<br>
+
 This guide is to help you set this app up.
+
 <br>
 
 1. **<ins>Clone the repository</ins>** on your local device using the command below:
@@ -21,6 +27,7 @@ This guide is to help you set this app up.
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
 
+<br>
 
 2. **<ins>Set up a virtual environment</ins>** on your device and <ins>**activate it**</ins>:
 ```
