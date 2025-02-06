@@ -2,4 +2,4 @@ env/
 assets/JD_Model/
 assets/Res_Model/
 client/
-.env
+/.env
