@@ -22,19 +22,20 @@ This guide is to help you set this app up.
 
 <br>
 
-1. **<ins>Clone the repository</ins>** on your local device using the command below:
+## 1. Clone the Repository
 ```
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
 
 <br>
 
-2. **<ins>Set up a virtual environment</ins>** on your device and <ins>**activate it**</ins>:
+## 2. Set and Activate the Virtual Environment
 ```
 python -m venv env
 env/Scripts/activate
 ```
 
+<br>
 
 3. **<ins>Install the necessary libraries and packages</ins>**:
 ```
