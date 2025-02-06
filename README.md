@@ -22,7 +22,7 @@ This guide is to help you set this app up.
 
 <br>
 
-### 1. <tab>Clone the Repository
+### 1. <tr>Clone the Repository
 ```
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
