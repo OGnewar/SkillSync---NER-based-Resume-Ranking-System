@@ -22,14 +22,14 @@ This guide is to help you set this app up.
 
 <br>
 
-### 1. Clone the Repository
+### 1.  Clone the Repository
 ```
 git clone https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System.git
 ```
 
 <br>
 
-### 2. Set and Activate the Virtual Environment
+### 2.  Set and Activate the Virtual Environment
 ```
 python -m venv env
 env/Scripts/activate
@@ -37,7 +37,7 @@ env/Scripts/activate
 
 <br>
 
-### 3. Install the Packages
+### 3.  Install the Packages
 ```
 python -m pip install --upgrade pip
 ```
@@ -64,9 +64,6 @@ pip install -U spacy-transformers
 ```
 ```
 pip install -U pypdf2
-```
-```
-pip install -U pypdf
 ```
 ```
 pip install -U torch
