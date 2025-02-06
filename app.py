@@ -13,7 +13,6 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
 
 # Google OAuth configuration
 oauth = OAuth(app)

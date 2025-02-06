@@ -94,12 +94,25 @@ python -m spacy download en_core_web_trf
     ```
     - Download the json file containing your client id and secret
 
-6. **Run the code** below to fire up the app:
+7. **Create a .env file in your local directory** and place your client id and secret:
+```
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_client-secret
+SECRET_KEY=your_secret_key
+```
+
+8. **Load the keys from .env file** placing it in your app.py:
+```
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+9. **Run the code** below to fire up the app:
 ```
 python app.py
 ```
 
-7. **Deactivate the virtual environment** after you're done with your work:
+10. **Deactivate the virtual environment** after you're done with your work:
 ```
 deactivate
 ```
