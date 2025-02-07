@@ -4,13 +4,17 @@
 
 <div class="container">
     <div class="jumbotron">
-        <img src="static/images/google.png" height="50px" style="display: block; margin: auto;">
+        {% if session['user'] %}
+        <img src="{{ session['user']['picture'] }}" alt="Profile Picture" class="login-profile-pic">
+        {% else %}
+        <img src="static/images/google.png" height="100px" style="display: block; margin: auto;">
+        {% endif %}
         <br>
         <h1 style="text-align:center;">Login Page</h1>
         <hr>
-        {% if current_user.is_authenticated %}
+        {% if session['user'] %}
         <br>
-        <h4>Welcome, {{ current_user.name }}</h4>
+        <h4>Welcome, {{ session['user']['name'] }}</h4>
         <br>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <a href="{{ url_for('logout') }}"><button class="btn btn-outline-dark btn-lg">Logout</button></a>

@@ -65,11 +65,17 @@ def google_login():
 @app.route("/login/callback")
 def authorized():
     token = google.authorize_access_token()
+    user_info = google.get('https://www.googleapis.com/oauth2/v2/userinfo').json()
     if not token:
         return "Access denied"
 
     # Store token in session
-    session["google_token"] = token
+    # session["google_token"] = token
+    session['user'] = {
+        'name': user_info['name'],
+        'email': user_info['email'],
+        'picture': user_info['picture']  # Store profile picture
+    }
 
     # Get user info
     user_info = google.get("https://www.googleapis.com/oauth2/v1/userinfo").json()
@@ -81,14 +87,12 @@ def authorized():
 
     return redirect(url_for("login"))
 
-
-
 # Logout Route
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    session.pop("google_token", None)
+    session.pop("user", None)
     return redirect(url_for("login"))
 
 # Configurations
