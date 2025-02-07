@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory, session
+from flask_session import Session
 from werkzeug.utils import secure_filename
 from authlib.integrations.flask_client import OAuth
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -16,6 +17,10 @@ app = Flask(__name__)
 
 # Google OAuth configuration
 oauth = OAuth(app)
+
+# Configure session to use filesystem (not cookies)
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
 
 app.config['GOOGLE_CLIENT_ID'] = os.getenv("GOOGLE_CLIENT_ID")
 app.config['GOOGLE_CLIENT_SECRET'] = os.getenv("GOOGLE_CLIENT_SECRET")
@@ -91,9 +96,10 @@ def authorized():
 @app.route("/logout")
 @login_required
 def logout():
-    logout_user()
-    session.pop("user", None)
-    return redirect(url_for("login"))
+    session.pop('user', None)
+    session.clear()
+    return redirect(url_for('login'))  # Redirect back to login page
+
 
 # Configurations
 UPLOAD_FOLDER = 'uploads'
