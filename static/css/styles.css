@@ -31,6 +31,32 @@
     margin: auto;
 }
 
+/* Full-screen Loading Overlay */
+#loading {
+    position: fixed; /* Covers the whole page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Covers the entire page, including footer */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent overlay */
+    z-index: 9999; /* Keeps it above everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bootstrap Spinner */
+.spinner-border {
+    width: 5rem;
+    height: 5rem;
+}
+
+/* Bootstrap Spinner */
+.spinner-grow {
+    width: 3rem;
+    height: 3rem;
+}
+
 
 
 

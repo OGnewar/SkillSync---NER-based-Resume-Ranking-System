@@ -10,7 +10,7 @@
         <br>
         <h5>Upload a <strong>Resume</strong> and hit the <strong>Parse</strong> button to parse your resume...</h5>
         <br>
-        
+        <!-- 
         <form action="{{ url_for('parse_res') }}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label" for="resume"><strong>Resume:</strong></label>
@@ -19,6 +19,83 @@
             <br>
             <input type=submit class="btn btn-outline-dark btn-lg" value=Parse>
         </form>
+        -->
+        <form id="resForm" action="{{ url_for('parse_res') }}" method="post" enctype="multipart/form-data"> 
+            <div class="mb-3">
+                <label class="form-label" for="resume"><strong>Resume:</strong></label>
+                <!-- Bootstrap Input Group for File Upload -->
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFile" name="resume" accept=".pdf" required>
+                    <button class="btn btn-outline-secondary" type="button" id="uploadButton">Upload</button>
+                </div>
+                <!-- File Name Display (Initially Hidden) -->
+                <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-outline-dark btn-lg" value="Parse" id="parseButton">
+        </form>
     </div>
 </div>
+
+<!-- Toasts Container (Top Right Below Navbar) -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="margin-top: 60px; z-index: 1050;">
+    <!-- Error Toast (No File Selected) -->
+    <div id="errorToast" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select a resume first!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Success Toast -->
+    <div id="successToast" class="toast align-items-center text-bg-success border-0 w-auto" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Resume uploaded successfully!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isUploaded = false; // Track if Upload was clicked
+    let selectedFileName = ""; // Store file name but don't show immediately
+
+    document.getElementById("inputGroupFile").addEventListener("change", function() {
+        var fileInput = document.getElementById("inputGroupFile");
+        
+        if (fileInput.files.length > 0) {
+            selectedFileName = fileInput.files[0].name; // Store file name
+            isUploaded = false; // Reset upload status when file changes
+        } else {
+            selectedFileName = "";
+        }
+    });
+
+    document.getElementById("uploadButton").addEventListener("click", function() {
+        var fileInput = document.getElementById("inputGroupFile");
+        var fileNameDisplay = document.getElementById("fileNameDisplay");
+
+        if (fileInput.files.length > 0) {
+            //fileNameDisplay.textContent = "Uploaded file: " + selectedFileName;
+            fileNameDisplay.style.display = "block"; // Show file name only after upload
+            isUploaded = true; // Mark as uploaded
+            showToast("successToast"); // Show success toast
+        } else {
+            showToast("errorToast"); // Show error toast
+        }
+    });
+
+    document.getElementById("parseButton").addEventListener("click", function(event) {
+        if (!isUploaded) {
+            event.preventDefault(); // Stop form submission
+            showToast("errorToast"); // Show warning toast
+        }
+    });
+
+    function showToast(toastId) {
+        var toastElement = document.getElementById(toastId);
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }    
+</script>
+
 {% endblock %}

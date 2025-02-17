@@ -11,6 +11,7 @@
         <br>
         <h5>Upload the job description and resume files and hit the <strong>Rank</strong> button to rank your resumes...</h5>
         <br>
+        <!--
         <form method=post enctype=multipart/form-data>
             <div class="mb-3">
                 <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
@@ -23,6 +24,147 @@
             <br>
             <input type=submit class="btn btn-outline-dark btn-lg" value=Rank style="align:center;">
         </form>
+        -->
+        <form method=post enctype=multipart/form-data>
+            <div class="mb-3">
+                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
+                <!-- Bootstrap Input Group for File Upload -->
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFileJob" name="job_description" accept=".pdf" required>
+                    <button class="btn btn-outline-secondary" type="button" id="uploadButtonJob">Upload</button>
+                </div>
+                <!-- File Name Display (Initially Hidden) -->
+                <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="resumes"><strong>Resume(s):</strong></label>
+                <!-- Bootstrap Input Group for File Upload -->
+                <div class="input-group">
+                    <input type="file" class="form-control" id="inputGroupFileRes" name="resumes" multiple required accept=".pdf" required>
+                    <button class="btn btn-outline-secondary" type="button" id="uploadButtonRes">Upload</button>
+                </div>
+                <!-- File Name Display (Initially Hidden) -->
+                <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
+            </div>
+            <br>
+            <input type=submit class="btn btn-outline-dark btn-lg" value="Rank" id="rankButton">
+        </form>
     </div>
 </div>
+
+<!-- Toasts Container -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="margin-top: 60px; z-index: 1050;">
+    <!-- Error Toast (No Job Selected) -->
+    <div id="errorToastJob" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select a job description first!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Error Toast (No Resume Selected) -->
+    <div id="errorToastRes" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select resume(s) first!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Error Toast (No files Selected) -->
+    <div id="errorToastAll" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Ranking unsuccessful!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Job Success Toast -->
+    <div id="successToastJob" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Job post uploaded successfully!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Resume Success Toast -->
+    <div id="successToastRes" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Resume(s) uploaded successfully!</div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isUploadedJob = false; // Track if Upload was clicked
+    let isUploadedRes = false;
+    let selectedFileName = ""; // Store file name but don't show immediately
+
+    document.getElementById("inputGroupFileJob").addEventListener("change", function() {
+        var fileInput = document.getElementById("inputGroupFileJob");
+        
+        if (fileInput.files.length > 0) {
+            selectedFileName = fileInput.files[0].name; // Store file name
+            isUploadedJob = false; // Reset upload status when file changes
+        } else {
+            selectedFileName = "";
+        }
+    });
+
+    document.getElementById("inputGroupFileRes").addEventListener("change", function() {
+        var fileInput = document.getElementById("inputGroupFileRes");
+        
+        if (fileInput.files.length > 0) {
+            selectedFileName = fileInput.files[0].name; // Store file name
+            isUploadedRes = false; // Reset upload status when file changes
+        } else {
+            selectedFileName = "";
+        }
+    });
+
+    document.getElementById("uploadButtonJob").addEventListener("click", function() {
+        var fileInput = document.getElementById("inputGroupFileJob");
+        var fileNameDisplay = document.getElementById("fileNameDisplay");
+
+        if (fileInput.files.length > 0) {
+            //fileNameDisplay.textContent = "Uploaded file: " + selectedFileName;
+            fileNameDisplay.style.display = "block"; // Show file name only after upload
+            isUploadedJob = true; // Mark as uploaded
+            showToast("successToastJob"); // Show success toast
+        } else {
+            showToast("errorToastJob"); // Show error toast
+        }
+    });
+
+    document.getElementById("uploadButtonRes").addEventListener("click", function() {
+        var fileInput = document.getElementById("inputGroupFileRes");
+        var fileNameDisplay = document.getElementById("fileNameDisplay");
+
+        if (fileInput.files.length > 0) {
+            //fileNameDisplay.textContent = "Uploaded file: " + selectedFileName;
+            fileNameDisplay.style.display = "block"; // Show file name only after upload
+            isUploadedRes = true; // Mark as uploaded
+            showToast("successToastRes"); // Show success toast
+        } else {
+            showToast("errorToastRes"); // Show error toast
+        }
+    });
+
+    document.getElementById("rankButton").addEventListener("click", function(event) {
+        if (!isUploadedJob && !isUploadedRes) {
+            event.preventDefault(); // Stop form submission
+            showToast("errorToastAll"); // Show warning toast
+        }
+        else if (!isUploadedJob) {
+            event.preventDefault();
+            showToast("errorToastJob");
+        }
+        else if (!isUploadedRes) {
+            event.preventDefault();
+            showToast("errorToastRes");
+        }
+    });
+
+    function showToast(toastId) {
+        var toastElement = document.getElementById(toastId);
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }    
+</script>
 {% endblock %}

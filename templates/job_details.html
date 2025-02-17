@@ -17,24 +17,158 @@
             </thead>
             <tbody>
                 <tr class="table-light">
-                    <td>Job Title</td>
-                    <td>{{ job_title }}</td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Title or postion of the job post.">Job Title</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if title%}
+                        {{ title }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
                 </tr>
                 <tr class="table-light">
-                    <td>Required Skills</td>
-                    <td>{{ job_skills }}</td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Name of the company that posted the job post.">Company Name</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if company%}
+                        {{ company }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
                 </tr>
                 <tr class="table-light">
-                    <td>Experience Needed</td>
-                    <td>{{ job_experience }}</td>
+                    <td >
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Experience required for the job post, in the format: experience duration in years, followed by the field of experience and role of the experience, ie. what they worked as (if mentioned).">Experience</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if experience%}
+                        {{ experience }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
                 </tr>
                 <tr class="table-light">
-                    <td>Education Required</td>
-                    <td>{{ job_education }}</td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Education qualifications in the format: education degrees followed by the field of study.">Education</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if education%}
+                        {{ education }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
                 </tr>
                 <tr class="table-light">
-                    <td>Preferred Languages</td>
-                    <td>{{ job_language }}</td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Sector of industry related to the job.">Sector</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if sector%}
+                        {{ sector }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Preferred certifications (if any).">Certification</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if certification%}
+                        {{ certification }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Technical skills expected of the applicant including concepts, methodologies, standards, architectures, policies, etc.">Hard Skills</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if hard%}
+                        {{ hard }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Soft skills required for the job post referring to the applicant's personal attributes and nature.">Soft Skills</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if soft%}
+                        {{ soft }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Tools required for the applicant to be expert in including the technologies, techniques, softwares, frameworks, systems and protocols.">Tools</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if tools%}
+                        {{ tools }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light text-black" data-bs-container="body" style="background-color: #ecedef;" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Products expected for the applicant to work on including what they would work on, what they would create, items, solutions, and projects.">Products</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if products%}
+                        {{ products }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
+                </tr>
+                <tr class="table-light">
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Languages required for the applicant to be proficient in.">Language</button>
+                        </div>
+                    </td>
+                    <td>
+                        {%if language%}
+                        {{ language }}
+                        {%else%}
+                        Not Available
+                        {%endif%}
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -42,4 +176,32 @@
         <a href="{{ url_for('parse_job') }}"><button type="button" class="btn btn-outline-dark btn-lg">Go Back</button></a>
     </div>
 </div>
+
+<!-- Toasts Container (Top Right Below Navbar) -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="margin-top: 60px; z-index: 1050;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="toast align-items-center text-bg-success border-0 w-auto" id="parseToast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body"><img src="static/images/check.png" style="height:25px;"> {{ message }}</div>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var parseToast = document.getElementById('parseToast');
+        if (parseToast) {
+            var toast = new bootstrap.Toast(parseToast);
+            toast.show(); // Show the toast when page loads
+        }
+    });
+</script>
+
+
 {% endblock %}

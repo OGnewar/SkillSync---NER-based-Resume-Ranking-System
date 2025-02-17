@@ -51,6 +51,13 @@
         </div>
     </nav>
 
+<!-- Loading Animation -->
+<div id="loading">
+    <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
 <div class="fade-content">
     {% block content %}
     {% endblock %}
@@ -135,5 +142,34 @@
 </footer>
 <!-- Footer -->
 </div>
+
+<!-- Loading Animation -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const loading = document.getElementById("loading");
+
+        // Show loading when clicking any link
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function(event) {
+                if (!this.href.startsWith("#") && this.target !== "_blank") {
+                    loading.style.display = "flex"; // Show loading animation
+                }
+            });
+        });
+
+        // Show loading on form submission (Parse or Rank button)
+        document.querySelectorAll("form").forEach(form => {
+            form.addEventListener("submit", function() {
+                loading.style.display = "flex";
+            });
+        });
+
+        // Hide loading when page is completely loaded
+        window.addEventListener("pageshow", function() {
+            loading.style.display = "none";
+        });
+    });
+</script>
+
 </body>
 </html>
