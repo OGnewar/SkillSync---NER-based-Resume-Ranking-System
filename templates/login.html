@@ -6,21 +6,21 @@
     <div class="jumbotron">
         <img src="static/images/google.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Login Page</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Login Page</h1>
         <hr>
         {% if current_user.is_authenticated %}
         <br>
-        <h4>Welcome, {{ current_user.name }}</h4>
+        <h4 style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Welcome, {{ current_user.name }}</h4>
         <br>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <a href="{{ url_for('logout') }}"><button class="btn btn-outline-dark btn-lg">Logout</button></a>
+            <a href="{{ url_for('logout') }}"><button class="btn btn-dark btn-lg" style="text-align:center; color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Logout</button></a>
         </div>
         {% else %}
         <br>
-        <h4>Click the button below to login with google:</h4>
+        <h4 style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Click the button below to login with google:</h4>
         <br>
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <a href="{{ url_for('google_login') }}"><button class="btn btn-outline-dark btn-lg">Login with Google</button></a>
+            <a href="{{ url_for('google_login') }}"><button class="btn btn-dark btn-lg" style="text-align:center; color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Login with Google</button></a>
         </div>
         {% endif %}
     </div>

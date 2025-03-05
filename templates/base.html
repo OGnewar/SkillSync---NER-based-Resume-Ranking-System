@@ -53,7 +53,7 @@
             {% if session['user'] %}
             <a href="{{ url_for('login') }}"><img src="{{ session['user']['picture'] }}" alt="Profile Picture" class="profile-pic"></a>
             {% else %}
-            <a href="{{ url_for('login') }}" class="btn btn-outline-dark">Login</a>
+            <a href="{{ url_for('login') }}" class="btn btn-dark" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Login</a>
             {% endif %}
         </div>
     </nav>
