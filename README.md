@@ -63,7 +63,10 @@ pip install -U numpy
 pip install -U spacy-transformers
 ```
 ```
-pip install -U pypdf2
+pip install -U pymupdf
+```
+```
+pip install -U dateparser
 ```
 ```
 pip install -U torch
