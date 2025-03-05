@@ -12,3 +12,4 @@ thinc
 Flask-Login
 Flask-Session
 Authlib
+gunicorn
