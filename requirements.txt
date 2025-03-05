@@ -1,0 +1,14 @@
+flask
+wekzeug
+transformers
+sentence-transformers
+spacy
+numpy
+spacy-transformers
+pymupdf
+dateparser
+torch
+thinc
+Flask-Login
+Flask-Session
+Authlib
