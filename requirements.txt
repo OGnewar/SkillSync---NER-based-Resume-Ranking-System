@@ -1,5 +1,5 @@
 flask
-wekzeug
+werkzeug
 transformers
 sentence-transformers
 spacy
