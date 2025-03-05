@@ -5,53 +5,64 @@
     <div class="jumbotron">
         <img src="static/images/information.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 class="text-center">Job & Resume Details</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Job & Resume Details</h1>
         <hr>
         <br>
         <div class="row">
             <!-- Job Details Table -->
             <div class="col-md-6">
-                <h3 class="text-center">Job Description Details</h3>
+                <h3 style="text-align:center; color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Job Description Details</h3>
                 <br>
-                <table class="table table-hover table-striped">
-                    <tr class="table-light"><th>Job Title</th><td>{{ job_features.get("title", "Unknown") }}</td></tr>
-                    <tr class="table-light"><th>Hard Skills</th><td>{{ job_features.get("hard", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Soft Skills</th><td>{{ job_features.get("soft", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Tools</th><td>{{ job_features.get("tools", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Products</th><td>{{ job_features.get("products", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Experience</th><td>{{ job_features.get("experience", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Education</th><td>{{ job_features.get("education", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Sector</th><td>{{ job_features.get("sector", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Certification</th><td>{{ job_features.get("certification", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Language</th><td>{{ job_features.get("language", "Not Available") }}</td></tr>
+                <table class="table table-striped">
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Job Title</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("title", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Hard Skills</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("hards", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Soft Skills</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("softs", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Tools</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("tools", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Products</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("products", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Experience</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("experience", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Education</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("education", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Sector</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("sectors", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Certification</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("certifications", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Language</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ jobFeats.get("language", "Unknown") }}</td></tr>
                 </table>
             </div>
 
             <!-- Resume Details Table -->
             <div class="col-md-6">
-                <h3 class="text-center">Resume Details</h3>
+                <h3 style="text-align:center; color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Resume Details</h3>
                 <br>
-                <table class="table table-hover table-striped">
-                    <tr class="table-light"><th>Name</th><td>{{ resume_features.get("name", "Unknown") }}</td></tr>
-                    <tr class="table-light"><th>Hard Skills</th><td>{{ resume_features.get("hard", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Soft Skills</th><td>{{ resume_features.get("soft", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Tools</th><td>{{ resume_features.get("tools", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Products</th><td>{{ resume_features.get("products", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Experience</th><td>{{ resume_features.get("experience", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Education</th><td>{{ resume_features.get("education", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Sector</th><td>{{ resume_features.get("sector", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Certification</th><td>{{ resume_features.get("certification", "Not Available") }}</td></tr>
-                    <tr class="table-light"><th>Language</th><td>{{ resume_features.get("language", "Not Available") }}</td></tr>
+                <table class="table table-striped">
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Name</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("name", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Hard Skills</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("hards", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Soft Skills</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("softs", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Tools</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("tools", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Products</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("products", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Experience</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("experience", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Education</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("education", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Sector</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("sectors", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Certification</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("certifications", "Unknown") }}</td></tr>
+                    <tr class="table-light"><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Language</td><td style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">{{ resFeats.get("language", "Unknown") }}</td></tr>
                 </table>
             </div>
         </div>
 
         <br>
-        <!-- Display Similarity Score -->
-        <div class="alert alert-secondary text-center">
-            <h4>Similarity Score: <strong>{{ "%.2f" | format(similarity_score * 100) }}%</strong></h4>
+        <!-- Display Similarity Breakdown -->
+        <div class="alert alert-secondary">
+            <h4 style="text-align:center; color:black; font-size:20px; font-family: 'Barlow', sans-serif;">Overall Similarity Score: <strong>{{ "%.2f" | format(similarity_score) }}%</strong></h4>
         </div>
-
+        <br>
+        <div class="row justify-content-center text-center">
+            <div class="col-md-6">
+                <h4 style="text-align:center; color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Score Breakdown</h4>
+                <table class="table table-light table-bordered">
+                    <tr><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Experience Score</td><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;" class=fs-6>{{ "%.2f" | format(experience_match) }}%</td></tr>
+                    <tr><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Education Score</td><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;" class=fs-6>{{ "%.2f" | format(education_match) }}%</td></tr>
+                    <tr><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Skills Score</td><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;" class=fs-6>{{ "%.2f" | format(skill_match) }}%</td></tr>
+                    <tr><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Language Score</td><td style="text-align:center; color:black; font-size:15px; font-family: 'Barlow', sans-serif;" class=fs-6>{{ "%.2f" | format(language_match) }}%</td></tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

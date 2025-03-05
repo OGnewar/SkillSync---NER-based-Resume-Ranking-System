@@ -5,32 +5,39 @@
     <div class="jumbotron">
         <img src="static/images/ranking.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Ranked Resumes</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Ranked Resumes</h1>
         <hr>
         <br>
-        <table class="table table-hover table-striped">
+        <table class="table table-striped">
             <thead>
-                <tr class="table-light">
-                    <th scope="col">Name</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Actions</th>
+                <tr class="table-dark">
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">S.N</td>
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Name</td>
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Score</td>
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">View Details</td>
                 </tr>
             </thead>
             <tbody>
-                {% for resume, score, name in ranked_resumes %}
-                <tr class="table-light">
+                {% for resume, score, similarity_results, resume_features in ranked_resumes %}
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
+                    <td>{{ loop.index }}</td>  <!-- Serial Number -->
                     <td>
-                        {%if name["name"]%}
-                        {{ name["name"] }}
-                        {%else%}
-                        {{resume[2:]}}
-                        {%endif%}
+                        {% if resume_features["applicant"]["name"] %}
+                            {{ resume_features["applicant"]["name"][0] }}
+                        {% else %}
+                            {{ resume[8:] }}
+                        {% endif %}
                     </td>
-                    <td>{{ "%.2f" | format(score * 100) }}</td>
+                    <td>{{ "%.2f" | format(score) }}</td>
                     <td>
-                        <a href="{{ url_for('view_details', job_path=job_path, resume_path=resume, score=score) }}" 
-                        class="btn btn-outline-secondary btn-sm"
-                        target="_blank" rel="noopener noreferrer">
+                        <a href="{{ url_for('view_details', job_path=job_path, resume_path=resume, 
+                            exp=similarity_results['experience_match'], 
+                            edu=similarity_results['education_match'], 
+                            skill=similarity_results['skill_match'], 
+                            lang=similarity_results['language_match'], 
+                            score=score) }}" 
+                            class="btn btn-secondary btn-sm"
+                            target="_blank" rel="noopener noreferrer" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">
                             View Details
                         </a>
                     </td>
@@ -38,8 +45,15 @@
                 {% endfor %}
             </tbody>
         </table>
+
         <br>
-        <a href="{{ url_for('rank') }}"><button type="button" class="btn btn-outline-dark btn-lg">Go Back</button></a>
+        <div class="d-grid justify-content-center">
+            <a href="{{ url_for('rank') }}">
+                <button type="button" class="btn btn-dark btn-lg" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">
+                    Go Back
+                </button>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -50,7 +64,7 @@
             {% for category, message in messages %}
                 <div class="toast align-items-center text-bg-success border-0 w-auto" id="rankToast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
-                        <div class="toast-body"><img src="static/images/check.png" style="height:25px;"> {{ message }}</div>
+                        <div class="toast-body"><img src="static/images/check.png" style="height:25px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">{{ message }}</span></div>
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>

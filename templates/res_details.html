@@ -5,217 +5,115 @@
     <div class="jumbotron">
         <img src="static/images/resume.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Parsed Resume Details</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Parsed Resume Details</h1>
         <hr>
         <br>
-        <table class="table table-hover table-striped">
+        <table class="table table-striped">
             <thead>
-                <tr class="table-light">
-                    <th scope="col">Features</th>
-                    <th scope="col">Values</th>
+                <tr class="table-dark">
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Features</td>
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Values</td>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Full name of the applicant">Name</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Full name of the applicant.">Name</span>
                     </td>
-                    <td>
-                        {%if name%}
-                        {{ name }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ name }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Email address of the applicant">Email ID</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Email ID of the applicant.">Email</span>
                     </td>
-                    <td>
-                        {%if email%}
-                        {{ email }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ email }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td >
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Linkedin link of the applicant.">Linkedin</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Available links of the applicant.">Links</span>
                     </td>
-                    <td>
-                        {%if linkedin%}
-                        {{ linkedin }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ links }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Date of birth of the applicant.">DOB</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Phone number of the applicant.">Phone</span>
                     </td>
-                    <td>
-                        {%if dob%}
-                        {{ dob }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ phone }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Experience of the applicant in terms of what they worked as followed by the duration.">Experience</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Date of birth of the applicant.">DOB</span>
                     </td>
-                    <td>
-                        {%if experience%}
-                        {{ experience }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ dob }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Education qualifications of the application in terms of their degree and corresponding field of study.">Education</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Experience of the applicant in terms of what they worked as followed by the duration and related fields.">Experience</span>
                     </td>
-                    <td>
-                        {%if education%}
-                        {{ education }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ experience }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Sectors or industries that the applicant has worked in and around.">Sector</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Education qualifications of the applicant in terms of their degree and corresponding field of study.">Education</span>
                     </td>
-                    <td>
-                        {%if sector%}
-                        {{ sector }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ education }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Certifications of the applicant">Certification</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Sectors or industries that the applicant has worked in and around.">Sector</span>
                     </td>
-                    <td>
-                        {%if certification%}
-                        {{ certification }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ sectors }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Technical skills of the applicant including concepts, methodologies, standards, architectures, policies, etc.">Hard Skills</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Certifications of the applicant">Certification</span>
                     </td>
-                    <td>
-                        {%if hard%}
-                        {{ hard }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ certifications }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" data-bs-container="body" style="background-color: #ecedef;" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Soft skills of the applicant referring to their personal attributes and nature.">Soft Skills</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Technical skills possessed by the applicant including concepts, methodologies, standards, architectures, policies, etc they are proficient in.">Hard Skills</span>
                     </td>
-                    <td>
-                        {%if soft%}
-                        {{ soft }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ hards }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Tools used by the applicant including the technologies, techniques, softwares, frameworks, systems and protocols.">Tools</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Soft skills possessed by the applicant referring to their personal attributes and nature.">Soft Skills</span>
                     </td>
-                    <td>
-                        {%if tools%}
-                        {{ tools }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ softs }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Products contributed to by the applicant including what they worked on, what they created, items, solutions, and projects.">Products</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Tools the applicant holds expertise in, including technologies, softwares, frameworks, systems and protocols.">Tools</span>
+                    </td>
+                    <td>{{ tools }}</td>
+                </tr>
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
+                    <td>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Products contributed to by the applicant including what they worked on, what they created, items, solutions, and projects.">Products</span>
                     </td>
                     <td>
-                        {%if products%}
                         {{ products }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
                     </td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Interests and hobbies of the applicant.">Interests</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Interests and hobbies of the applicant.">Interests</span>
                     </td>
-                    <td>
-                        {%if interests%}
-                        {{ interests }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ interests }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Languages the applicant is proficient in.">Language</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Languages the applicant is proficient in.">Language</span>
                     </td>
-                    <td>
-                        {%if language%}
-                        {{ language }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ language }}</td>
                 </tr>
             </tbody>
         </table>
         <br>
-        <a href="{{ url_for('parse_res') }}"><button type="button" class="btn btn-outline-dark btn-lg">Go Back</button></a>
+        <div class="d-grid gap-2 justify-content-md-center">
+        <a href="{{ url_for('parse_res') }}"><button type="button" class="btn btn-dark btn-lg" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Go Back</button></a>
+        </div>
     </div>
 </div>
 
@@ -226,7 +124,7 @@
             {% for category, message in messages %}
                 <div class="toast align-items-center text-bg-success border-0 w-auto" id="parseToast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
-                        <div class="toast-body"><img src="static/images/check.png" style="height:25px;"> {{ message }}</div>
+                        <div class="toast-body"><img src="static/images/check.png" style="height:25px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">{{ message }}</span></div>
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>

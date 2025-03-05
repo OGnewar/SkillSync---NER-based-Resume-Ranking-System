@@ -4,8 +4,17 @@ import os
 from modules.pdf_utils import extract_text_from_pdf
 from modules.feature_extract_job import job_extract_features
 from modules.feature_extract_res import res_extract_features
-from modules.similarity import calculate_similarity
+from modules.extract_job_features import extract_job_features
+from modules.extract_res_features import extract_res_features
+from modules.similarity.similarity import calculate_similarity
 from modules.preprocess_text import preprocess_text
+
+from modules.features.exResFeats import exResFeats
+from modules.features.exJobFeats import exJobFeats
+from modules.features.displayResFeats import displayResFeats
+from modules.features.displayJobFeats import displayJobFeats
+from modules.features.compJobFeats import compJobFeats
+from modules.features.compResFeats import compResFeats
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -40,18 +49,35 @@ def parse_res():
 
         # Extract text from PDF
         resume_text = extract_text_from_pdf(resume_path)
-        
-        #preprocess res_text
-        res_preprocessed_text = preprocess_text(resume_text)
 
         # Extract features using the custom NER model
-        resume_features = res_extract_features(resume_text)
+        resume_features = exResFeats(resume_text)
+        
+        # Formatted resume features for display
+        resFeatures = displayResFeats(resume_features)
         
         #flash message
         flash('Parsing successful!', 'success')
 
+        #get resume features
+        name=resFeatures.get("name", "Unknown")
+        email=resFeatures.get("email", "Unknown")
+        links=resFeatures.get("links", "Unknown")
+        phone = resFeatures.get("phone", "Unknown")
+        dob=resFeatures.get("dob", "Unknown")
+        experience=resFeatures.get("experience", "Unknown")
+        education=resFeatures.get("education", "Unknown")
+        certifications=resFeatures.get("certifications", "Unknown")
+        hards=resFeatures.get("hards", "Unknown")
+        softs=resFeatures.get("softs", "Unknown")
+        tools=resFeatures.get("tools", "Unknown")
+        products=resFeatures.get("products", "Unknown")
+        sectors=resFeatures.get("sectors", "Unknown")
+        interests=resFeatures.get("interests", "Unknown")
+        language=resFeatures.get("language", "Unknown")
+        
         # Redirect to results page with parsed data
-        return redirect(url_for('res_details', name=resume_features.get("name", "Unknown"), email=resume_features.get("email", "Unknown"), linkedin=resume_features.get("linkedin", "Unknown"), dob=resume_features.get("dob", "Unknown"), experience=resume_features.get("experience", "Unknown"), education=resume_features.get("education", "Unknown"), certification=resume_features.get("certification", "Unknown"), hard=resume_features.get("hard", "Unknown"), soft=resume_features.get("soft", "Unknown"), tools=resume_features.get("tools", "Unknown"), products=resume_features.get("products", "Unknown"), sector=resume_features.get("sector", "Unknown"), interests=resume_features.get("interests", "Unknown"), language=resume_features.get("language", "Unknown")))
+        return redirect(url_for('res_details', name=name, email=email, links=links, phone=phone, dob=dob, experience=experience, education=education, certifications=certifications, hards=hards, softs=softs, tools=tools, products=products, sectors=sectors, interests=interests, language=language))
 
     return render_template('parse_res.html')
 
@@ -61,20 +87,21 @@ def res_details():
     # Get extracted resume data from query parameters
     name = request.args.get("name", "Unknown")
     email = request.args.get("email", "Not Available")
-    linkedin = request.args.get("linkedin", "Not Available")
+    links = request.args.get("links", "Not Available")
+    phone = request.args.get("phone", "Not Available")
     dob = request.args.get("dob", "Not Available")
     experience = request.args.get("experience", "Not Available")
     education = request.args.get("education", "Not Available")
-    certification = request.args.get("certification", "Not Available")
-    hard = request.args.get("hard", "Not Available")
-    soft = request.args.get("soft", "Not Available")
+    certifications = request.args.get("certifications", "Not Available")
+    hards = request.args.get("hards", "Not Available")
+    softs = request.args.get("softs", "Not Available")
     tools = request.args.get("tools", "Not Available")
     products = request.args.get("products", "Not Available")
-    sector = request.args.get("sector", "Not Available")
+    sectors = request.args.get("sectors", "Not Available")
     interests = request.args.get("interests", "Not Available")
     language = request.args.get("language", "Not Available")
 
-    return render_template('res_details.html', name=name, email=email, linkedin=linkedin, dob=dob, experience=experience, education=education, certification=certification, hard=hard, soft=soft, tools=tools, products=products, sector=sector, interests=interests, language=language)
+    return render_template('res_details.html', name=name, email=email, links=links, phone=phone, dob=dob, experience=experience, education=education, certifications=certifications, hards=hards, softs=softs, tools=tools, products=products, sectors=sectors, interests=interests, language=language)
 
 #Parse JD Page
 @app.route('/parse_job', methods=['GET', 'POST'])
@@ -92,18 +119,31 @@ def parse_job():
 
         # Extract text from PDF
         job_text = extract_text_from_pdf(job_path)
-        
-        #preprocess job_text
-        job_preprocessed_text = preprocess_text(job_text)
 
         # Extract features using the custom NER model
-        job_features = job_extract_features(job_text)
+        job_features = exJobFeats(job_text)
+        
+        # Formatted job features
+        jobFeatures = displayJobFeats(job_features)
         
         # Flash a success message to show after redirect
         flash('Parsing Successful!', 'success')
 
+        #Get job features
+        title=jobFeatures.get("title", "Unknown")
+        company=jobFeatures.get("company", "Unknown") 
+        experience=jobFeatures.get("experience", "Unknown")
+        education=jobFeatures.get("education", "Unknown")
+        certifications=jobFeatures.get("certifications", "Unknown")
+        sectors=jobFeatures.get("sectors", "Unknown")
+        hards=jobFeatures.get("hards", "Unknown")
+        softs=jobFeatures.get("softs", "Unknown")
+        tools=jobFeatures.get("tools", "Unknown")
+        products=jobFeatures.get("products", "Unknown")
+        language=jobFeatures.get("language", "Unknown")
+        
         # Redirect to the parsed job description details page
-        return redirect(url_for('job_details', title=job_features.get("title", "Unknown"), company=job_features.get("company", "Unknown"), experience=job_features.get("experience", "Unknown"), education=job_features.get("education", "Unknown"), certification=job_features.get("certification", "Unknown"), sector=job_features.get("sector", "Unknown"), hard=job_features.get("hard", "Unknown"), soft=job_features.get("soft", "Unknown"), tools=job_features.get("tools", "Unknown"), products=job_features.get("products", "Unknown"), language=job_features.get("language", "Unknown")))
+        return redirect(url_for('job_details', title=title, company=company, experience=experience, education=education, certifications=certifications, sectors=sectors, hards=hards, softs=softs, tools=tools, products=products, language=language))
     
     return render_template('parse_job.html')
 
@@ -114,16 +154,15 @@ def job_details():
     company = request.args.get("company", "Not Available")
     experience = request.args.get("experience", "Not Available")
     education = request.args.get("education", "Not Available")
-    sector = request.args.get("sector", "Not Available")
-    certification = request.args.get("certification", "Not Available")
-    hard = request.args.get("hard", "Not Available")
-    soft = request.args.get("soft", "Not Available")
+    sectors = request.args.get("sectors", "Not Available")
+    certifications = request.args.get("certifications", "Not Available")
+    hards = request.args.get("hards", "Not Available")
+    softs = request.args.get("softs", "Not Available")
     tools = request.args.get("tools", "Not Available")
     products = request.args.get("products", "Not Available")
     language = request.args.get("language", "Not Available")
     
-    return render_template('job_details.html', title=title, company=company, experience=experience, education=education, sector=sector, certification=certification, hard=hard, soft=soft, tools=tools, products=products, language=language)
-
+    return render_template('job_details.html', title=title, company=company, experience=experience, education=education, sectors=sectors, certifications=certifications, hards=hards, softs=softs, tools=tools, products=products, language=language)
 
 # Route: Ranking page
 @app.route('/rank', methods=['GET', 'POST'])
@@ -158,49 +197,63 @@ def results():
 
     # Extract and process job description
     job_text = extract_text_from_pdf(job_path)
-    job_preprocessed_text = preprocess_text(job_text)
-    job_features = job_extract_features(job_text)
+    #job_features = extract_job_features(job_text)
+    
+    job_features = exJobFeats(job_text)
+    jobFeats = compJobFeats(job_features)
 
-    # Process resumes and calculate similarity scores
     ranked_resumes = []
+    
     for resume_path in resume_paths:
         resume_text = extract_text_from_pdf(resume_path)
-        res_preprocessed_text = preprocess_text(resume_text)
-        resume_features = res_extract_features(resume_text)
+        #resume_features = extract_res_features(resume_text)
+        
+        resume_features = exResFeats(resume_text)
+        resFeats = compResFeats(resume_features)
 
-        # Calculate similarity score
-        similarity_score = calculate_similarity(job_features, resume_features)
-        ranked_resumes.append((resume_path, similarity_score, resume_features))
+        # Calculate similarity scores
+        similarity_results = calculate_similarity(jobFeats, resFeats)
+        overall_similarity_score = similarity_results["overall_similarity_score"]
 
-    # Sort resumes by similarity score in descending order
+        ranked_resumes.append((resume_path, overall_similarity_score, similarity_results, resFeats))
+
+    # Sort resumes by overall similarity score in descending order
     ranked_resumes.sort(key=lambda x: x[1], reverse=True)
 
-    return render_template('results.html', ranked_resumes=ranked_resumes, job_path=job_path, resume_features=resume_features)
+    return render_template('results.html', ranked_resumes=ranked_resumes, job_path=job_path)
 
 @app.route('/view_details')
 def view_details():
     job_path = request.args.get('job_path')
     resume_path = request.args.get('resume_path')
-    similarity_score = request.args.get('score')
 
-    # Ensure similarity_score is properly converted to float
-    try:
-        similarity_score = float(similarity_score)
-    except (TypeError, ValueError):
-        similarity_score = 0.0  # Default if conversion fails
+    # Get individual similarity scores
+    experience_match = float(request.args.get('exp', 0.0))
+    education_match = float(request.args.get('edu', 0.0))
+    skill_match = float(request.args.get('skill', 0.0))
+    language_match = float(request.args.get('lang', 0.0))
+    similarity_score = float(request.args.get('score', 0.0))
 
     # Extract job details
     job_text = extract_text_from_pdf(job_path)
-    job_preprocessed_text = preprocess_text(job_text)
-    job_features = job_extract_features(job_text)
+    job_features = exJobFeats(job_text)
+    jobFeats = displayJobFeats(job_features)
 
     # Extract resume details
     resume_text = extract_text_from_pdf(resume_path)
-    res_preprocessed_text = preprocess_text(resume_text)
-    resume_features = res_extract_features(resume_text)
+    resume_features = exResFeats(resume_text)
+    resFeats = displayResFeats(resume_features)
 
-    return render_template('view_details.html', job_features=job_features, resume_features=resume_features, similarity_score=similarity_score)
-
+    return render_template(
+        'view_details.html',
+        jobFeats=jobFeats,
+        resFeats=resFeats,
+        similarity_score=similarity_score,
+        experience_match=experience_match,
+        education_match=education_match,
+        skill_match=skill_match,
+        language_match=language_match
+    )
 
 @app.route('/aboutUs')
 def aboutUs():

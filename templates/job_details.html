@@ -5,175 +5,89 @@
     <div class="jumbotron">
         <img src="static/images/suitcase.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Parsed Job Description Details</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Parsed Job Description Details</h1>
         <hr>
         <br>
-        <table class="table table-hover table-striped">
+        <table class="table table-striped">
             <thead>
-                <tr class="table-light">
-                    <th scope="col">Features</th>
-                    <th scope="col">Values</th>
+                <tr class="table-dark">
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Features</td>
+                    <td style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;" scope="col">Values</td>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Title or postion of the job post.">Job Title</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Title or position of the job post.">Job Title</span>
                     </td>
-                    <td>
-                        {%if title%}
-                        {{ title }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ title }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Name of the company that posted the job post.">Company Name</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Name of the company that posted the job description.">Company Name</span>
                     </td>
-                    <td>
-                        {%if company%}
-                        {{ company }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ company }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td >
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Experience required for the job post, in the format: experience duration in years, followed by the field of experience and role of the experience, ie. what they worked as (if mentioned).">Experience</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Experience required for the job post, in the format: experience duration in years, followed by the field of experience and role of the experience, ie. what they worked as (if mentioned).">Experience</span>
                     </td>
-                    <td>
-                        {%if experience%}
-                        {{ experience }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ experience }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Education qualifications in the format: education degrees followed by the field of study.">Education</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Education qualifications required for the job post in terms of required degrees in the corresponding fields of study.">Education</span>
                     </td>
-                    <td>
-                        {%if education%}
-                        {{ education }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ education }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Sector of industry related to the job.">Sector</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Sectors or industries related to the job.">Sector</span>
                     </td>
-                    <td>
-                        {%if sector%}
-                        {{ sector }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ sectors }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Preferred certifications (if any).">Certification</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Preferred certifications (if any).">Certification</span>
                     </td>
-                    <td>
-                        {%if certification%}
-                        {{ certification }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ certifications }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Technical skills expected of the applicant including concepts, methodologies, standards, architectures, policies, etc.">Hard Skills</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Technical skills expected of the applicant including concepts, methodologies, standards, architectures, policies, etc.">Hard Skills</span>
                     </td>
-                    <td>
-                        {%if hard%}
-                        {{ hard }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ hards }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" style="background-color: #ecedef;" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Soft skills required for the job post referring to the applicant's personal attributes and nature.">Soft Skills</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Soft skills required for the job post referring to the applicant's personal attributes and nature.">Soft Skill</span>
                     </td>
-                    <td>
-                        {%if soft%}
-                        {{ soft }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ softs }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Tools required for the applicant to be expert in including the technologies, techniques, softwares, frameworks, systems and protocols.">Tools</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Tools required for the applicant to be expert in including the technologies, techniques, softwares, frameworks, systems and protocols.">Tools</span>
                     </td>
-                    <td>
-                        {%if tools%}
-                        {{ tools }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ tools }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light text-black" data-bs-container="body" style="background-color: #ecedef;" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Products expected for the applicant to work on including what they would work on, what they would create, items, solutions, and projects.">Products</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Products expected for the applicant to work on including what they would work on, what they would create, items, solutions, and projects.">Products</span>
                     </td>
-                    <td>
-                        {%if products%}
-                        {{ products }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ products }}</td>
                 </tr>
-                <tr class="table-light">
+                <tr class="table-light" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <td>
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Languages required for the applicant to be proficient in.">Language</button>
-                        </div>
+                        <span tabindex="0" class="text-dark" role="button" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Languages required for the applicant to be proficient in.">Language</span>
                     </td>
-                    <td>
-                        {%if language%}
-                        {{ language }}
-                        {%else%}
-                        Not Available
-                        {%endif%}
-                    </td>
+                    <td>{{ language }}</td>
                 </tr>
             </tbody>
         </table>
         <br>
-        <a href="{{ url_for('parse_job') }}"><button type="button" class="btn btn-outline-dark btn-lg">Go Back</button></a>
+        <div class="d-grid gap-2 justify-content-md-center">
+        <a href="{{ url_for('parse_job') }}"><button type="button" class="btn btn-dark btn-lg" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Go Back</button></a>
+        </div>
     </div>
 </div>
 
@@ -184,7 +98,7 @@
             {% for category, message in messages %}
                 <div class="toast align-items-center text-bg-success border-0 w-auto" id="parseToast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
-                        <div class="toast-body"><img src="static/images/check.png" style="height:25px;"> {{ message }}</div>
+                        <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">{{ message }}</span></div>
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>

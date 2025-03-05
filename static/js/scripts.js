@@ -24,3 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return new bootstrap.Popover(popoverTriggerEl, { trigger: "focus" }); // Disappears when clicking elsewhere
     });
 });
+
+
+
+

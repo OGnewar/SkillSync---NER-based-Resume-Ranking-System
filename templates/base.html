@@ -13,34 +13,41 @@
     {#Bootstrap 5.0#}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    {#barow font#}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
     {#fade animation#}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon2.ico">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('skillSync')}}"><img src="static/images/icon.png" width="50" height="50" class="d-inline-block align-text-center">  SkillSync</a>
+        <a class="navbar-brand" href="{{ url_for('skillSync') }}" style="font-family: 'Barlow', sans-serif;">
+            <img src="{{ url_for('static', filename='images/icon.png') }}" width="50" height="50" class="d-inline-block align-text-center"> SkillSync
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
+    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('intro')}}">Introduction<span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if request.path == url_for('intro') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('intro') }}" style="font-family: 'Barlow', sans-serif;">Introduction</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('parse_res')}}">Parse Resume<span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if request.path == url_for('parse_res') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('parse_res') }}" style="font-family: 'Barlow', sans-serif;">Parse Resume</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('parse_job')}}">Parse Job Description<span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if request.path == url_for('parse_job') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('parse_job') }}" style="font-family: 'Barlow', sans-serif;">Parse Job Description</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('rank')}}">Rank <span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if request.path == url_for('rank') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('rank') }}" style="font-family: 'Barlow', sans-serif;">Rank</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{url_for('aboutUs')}}">About Us<span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if request.path == url_for('aboutUs') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('aboutUs') }}" style="font-family: 'Barlow', sans-serif;">About Us</a>
                 </li>
             </ul>
             {% if session['user'] %}
@@ -68,7 +75,7 @@
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
+            <span style="font-family: 'Barlow', sans-serif;">Get connected with us on our socials:</span>
         </div>
         <!-- Left -->
         <!-- Right -->
@@ -92,40 +99,40 @@
             <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 <!-- Content -->
-                <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>SkillSync</h6>
-                <p>We provide you with an efficient tool to parse your resumes and job descriptions. Not only that, you can use our ranking system to compare and rank your resumes against a job description of your choosing.</p>
+                <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i><span style="font-family: 'Barlow', sans-serif;">SkillSync</span></h6>
+                <p style="font-family: 'Barlow', sans-serif;">We provide you with an efficient tool to parse your resumes and job descriptions. Not only that, you can use our ranking system to compare and rank your resumes against a job description of your choosing.</p>
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                 <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
-                <p><a href="{{url_for('skillSync')}}" class="text-reset">What is it?</a></p>
-                <p><a href="{{url_for('intro')}}" class="text-reset">How does it work?</a></p>
-                <p><a href="https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-a-resume-with-examples" class="text-reset">How to write resumes?</a></p>
-                <p><a href="https://www.wright.edu/human-resources/writing-an-effective-job-description" class="text-reset">How to write job descriptions?</a></p>
+                <h6 class="text-uppercase fw-bold mb-4"><span style="font-family: 'Barlow', sans-serif;">Useful Links</span></h6>
+                <p><a href="{{url_for('skillSync')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">What is it?</a></p>
+                <p><a href="{{url_for('intro')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">How does it work?</a></p>
+                <p><a href="https://www.indeed.com/career-advice/resumes-cover-letters/how-to-make-a-resume-with-examples" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">How to write resumes?</a></p>
+                <p><a href="https://www.wright.edu/human-resources/writing-an-effective-job-description" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">How to write job descriptions?</a></p>
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                 <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">Our Features</h6>
-                <p><a href="{{url_for('parse_res')}}" class="text-reset">Parse Resumes</a></p>
-                <p><a href="{{url_for('parse_job')}}" class="text-reset">Parse Job Descriptions</a></p>
-                <p><a href="{{url_for('rank')}}" class="text-reset">Rank Resumes</a></p>
+                <h6 class="text-uppercase fw-bold mb-4"><span style="font-family: 'Barlow', sans-serif;">Our Features</span></h6>
+                <p><a href="{{url_for('parse_res')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">Parse Resumes</a></p>
+                <p><a href="{{url_for('parse_job')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">Parse Job Descriptions</a></p>
+                <p><a href="{{url_for('rank')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;">Rank Resumes</a></p>
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <!-- Links -->
-                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                <p><img src="static/images/map.png" height="25px" width="20px" style="opacity:0.5;"> Lamachaur, Pokhara-16</p>
-                <p><a href="{{url_for('aboutUs')}}" class="text-reset" style="text-decoration:none;"><img src="static/images/page.png" height="20px" width="20px" style="opacity:0.5;"> About Us</a></p>
-                <p><img src="static/images/mail.png" height="20px" width="20px" style="opacity:0.5;">  sentake101@gmail.com</p>
-                <p><img src="static/images/phone.png" height="20px" width="20px" style="opacity:0.5;"> 9846123456</p>
+                <h6 class="text-uppercase fw-bold mb-4"><span style="font-family: 'Barlow', sans-serif;">Contact</span></h6>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/map.png" height="25px" width="20px" style="opacity:0.5;"> Lamachaur, Pokhara-16</p>
+                <p><a href="{{url_for('aboutUs')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;"><img src="static/images/page.png" height="20px" width="20px" style="opacity:0.5;"> About Us</a></p>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/mail.png" height="20px" width="20px" style="opacity:0.5;">  sentake101@gmail.com</p>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/phone.png" height="20px" width="20px" style="opacity:0.5;"> 9846123456</p>
             <!-- Grid column -->
             </div>
             <!-- Grid row -->
@@ -134,14 +141,30 @@
     <!-- Section: Links  -->
 
     <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); font-family: 'Barlow', sans-serif;">
         © 2025 Copyright:
-        <a class="text-reset fw-bold" href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System">SkillSync</a>
+        <a class="text-reset" style="text-decoration:none;" href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System"><span style="font-weight:bold; font-family: 'Barlow', sans-serif;">SkillSync</span></a>
     </div>
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
 </div>
+
+<!-- Active nav bar marker -->
+<style>
+    .nav-item.active a {
+        position: relative;
+    }
+    .nav-item.active a::after {
+        content: ".";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        color:rgb(0, 0, 0); /* Change to match your theme */
+    }
+</style>
 
 <!-- Loading Animation -->
 <script>

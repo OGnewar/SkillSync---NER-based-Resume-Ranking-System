@@ -5,33 +5,24 @@
     <div class="jumbotron">
         <img src="static/images/suitcase.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Welcome to the Job Description Parsing Page!</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Job Description Parser</h1>
         <hr>
         <br>
-        <h5>Upload a <strong>Job Description</strong> and hit the <strong>Parse</strong> button to parse your job description...</h5>
+        <h5 style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Upload a <strong>Job Description</strong> and hit the <strong>Parse</strong> button to parse your job description...</h5>
         <br>
-        <!-- 
-        <form action="{{ url_for('parse_job') }}" method="post" enctype="multipart/form-data">
+        <form id="jobForm" action="{{ url_for('parse_job') }}" method="post" enctype="multipart/form-data" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;"> 
             <div class="mb-3">
-                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
-                <input type="file" class="form-control" name="job_description" accept=".pdf" required>
-            </div>
-            <br>
-            <input type=submit class="btn btn-outline-dark btn-lg" value=Parse style="align:center;">
-        </form>-->
-        <form id="jobForm" action="{{ url_for('parse_job') }}" method="post" enctype="multipart/form-data"> 
-            <div class="mb-3">
-                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
+                <label class="form-label" for="job_description" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">Job Description:</label>
                 <!-- Bootstrap Input Group for File Upload -->
                 <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile" name="job_description" accept=".pdf" required>
-                    <button class="btn btn-outline-secondary" type="button" id="uploadButton">Upload</button>
+                    <button class="btn btn-secondary" type="button" id="uploadButton" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
                 <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
             </div>
             <br>
-            <input type="submit" class="btn btn-outline-dark btn-lg" value="Parse" id="parseButton">
+            <input type="submit" class="btn btn-dark btn-lg" value="Parse" id="parseButton" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">
         </form>
     </div>
 </div>
@@ -41,14 +32,20 @@
     <!-- Error Toast (No File Selected) -->
     <div id="errorToast" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select a job post first!</div>
+            <div class="toast-body">
+                <img src="static/images/cross.png" style="height:20px; margin-right:8px;">
+                <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select a job post first!</span>
+            </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Success Toast -->
     <div id="successToast" class="toast align-items-center text-bg-success border-0 w-auto" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Job post uploaded successfully!</div>
+            <div class="toast-body">
+                <img src="static/images/check.png" style="height:20px; margin-right:8px;">
+                <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Job post uploaded successfully!</span>
+            </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>

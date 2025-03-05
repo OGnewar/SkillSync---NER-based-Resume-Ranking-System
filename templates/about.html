@@ -2,9 +2,80 @@
 
 
 {% block content %}
+<!-- Banner Section -->
+<div class="position-relative">
+    <img src="static/images/c6.jpg" class="img-fluid w-100" alt="Banner">
+    <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+        <h1 style="color:white; font-size:75px; font-family: 'Barlow', sans-serif;">About Us</h1>
+        {#<p style="color:black; font-size:20px; font-family: 'Barlow', sans-serif;">NER based resume ranking system</p>#}
+    </div>
+</div>
 <div class="jumbotron">
-    <h1>Welcome to the About Us Page!</h1>
-    <hr class="my-4">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1 style="color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Welcome to SkillSync – Resume Ranking with AI</h1>
+    <hr>
+    <p class="text-muted" style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">At <strong>SkillSync</strong>, we bridge the gap between talent and opportunity using advanced <strong>Named Entity Recognition (NER)</strong> and AI-driven resume ranking. Our intelligent system analyzes resumes and job descriptions to deliver highly accurate candidate-job matching, ensuring recruiters find the best-fit applicants efficiently.</p>
+    <br>
+    <h1 style="color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Our Mission</h1>
+    <hr>
+    <p class="text-muted" style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">We aim to revolutionize the hiring process by leveraging <strong>AI</strong> and <strong>Natural Language Processing (NLP)</strong> to provide fair, transparent, and data-driven resume evaluations. With SkillSync, companies can reduce hiring time, improve candidate quality, and make informed decisions.</p>
+    <br>
+    <h3 style="color:black; font-size:30px; font-family: 'Barlow', sans-serif;">How SkillSync Works</h3>
+    <hr>
+    <p>
+        <ol class="text-muted" style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">
+            <li><strong>NER-Powered Resume Parsing</strong></li>
+            <p>Extracts key skills, experiences, qualifications, and certifications from resumes.</p>
+            <li><strong>NER-Powered Job Description Parsing</strong></li>
+            <p>Extracts key skills, experiences, qualifications, and certifications from job descriptions.</p>
+            <li><strong>Job-Resume Comparing Algorithm</strong></li>
+            <p>Compares resumes against job descriptions to generate a match percentage.</p>
+            <li><strong>Ranking Resumes</strong></li>
+            <p>Recruiters get a prioritized list of top candidates based on relevance.</p>
+        </ol>
+    </p>
+    <br>
+    <h1 style="color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Why Choose SkillSync?</h1>
+    <hr>
+    <p>
+        <ul class="text-muted" style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">
+            <li><strong>AI-Driven Precision</strong></li>
+            <p>Advanced NLP ensures accurate skill extraction and matching.</p>
+            <li><strong>Time-Saving Automation</strong></li>
+            <p>No more manual screening—SkillSync does the heavy lifting.</p>
+            <li><strong>Fair & Unbiased</strong></li>
+            <p>Focuses on skills and qualifications, reducing bias in hiring.</p>
+        </ul>
+    </p>
+    <br>
+    <h1 style="color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Meet the Devs</h1>
+    <hr>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Accordion Item #1</button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">Accordion Item #2</button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Accordion Item #3</button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 {% endblock %}

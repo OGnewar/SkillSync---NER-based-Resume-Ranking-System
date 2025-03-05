@@ -6,48 +6,34 @@
     <div class="jumbotron">
         <img src="static/images/ranking.png" height="50px" style="display: block; margin: auto;">
         <br>
-        <h1 style="text-align:center;">Welcome to the Ranking Page!</h1>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Resume Ranking</h1>
         <hr>
         <br>
-        <h5>Upload the job description and resume files and hit the <strong>Rank</strong> button to rank your resumes...</h5>
+        <h5 style="color:black; font-size:18px; font-family: 'Barlow', sans-serif;">Upload the job description and resume files and hit the <strong>Rank</strong> button to rank your resumes...</h5>
         <br>
-        <!--
         <form method=post enctype=multipart/form-data>
             <div class="mb-3">
-                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
-                <input type=file class="form-control" name=job_description required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="resumes"><strong>Resume:</strong></label>
-                <input type=file class="form-control" name=resumes multiple required>  
-            </div>
-            <br>
-            <input type=submit class="btn btn-outline-dark btn-lg" value=Rank style="align:center;">
-        </form>
-        -->
-        <form method=post enctype=multipart/form-data>
-            <div class="mb-3">
-                <label class="form-label" for="job_description"><strong>Job Description:</strong></label>
+                <label class="form-label" for="job_description" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;" for="resume">Job Description:</label>
                 <!-- Bootstrap Input Group for File Upload -->
-                <div class="input-group">
+                <div class="input-group" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <input type="file" class="form-control" id="inputGroupFileJob" name="job_description" accept=".pdf" required>
-                    <button class="btn btn-outline-secondary" type="button" id="uploadButtonJob">Upload</button>
+                    <button class="btn btn-secondary" type="button" id="uploadButtonJob" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
                 <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="resumes"><strong>Resume(s):</strong></label>
+                <label class="form-label" for="resumes" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;" for="resume">Resume(s):</label>
                 <!-- Bootstrap Input Group for File Upload -->
-                <div class="input-group">
+                <div class="input-group" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
                     <input type="file" class="form-control" id="inputGroupFileRes" name="resumes" multiple required accept=".pdf" required>
-                    <button class="btn btn-outline-secondary" type="button" id="uploadButtonRes">Upload</button>
+                    <button class="btn btn-secondary" type="button" id="uploadButtonRes" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
                 <p id="fileNameDisplay" class="mt-2 text-muted" style="display: none;"></p>
             </div>
             <br>
-            <input type=submit class="btn btn-outline-dark btn-lg" value="Rank" id="rankButton">
+            <input type=submit class="btn btn-dark btn-lg" value="Rank" id="rankButton" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">
         </form>
     </div>
 </div>
@@ -57,35 +43,35 @@
     <!-- Error Toast (No Job Selected) -->
     <div id="errorToastJob" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select a job description first!</div>
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select a job description first!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Error Toast (No Resume Selected) -->
     <div id="errorToastRes" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Please select resume(s) first!</div>
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select resume(s) first!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Error Toast (No files Selected) -->
     <div id="errorToastAll" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px;"> Ranking unsuccessful!</div>
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Ranking unsuccessful!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Job Success Toast -->
     <div id="successToastJob" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Job post uploaded successfully!</div>
+            <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Job post uploaded successfully!<span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Resume Success Toast -->
     <div id="successToastRes" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/check.png" style="height:20px;"> Resume(s) uploaded successfully!</div>
+            <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Resume(s) uploaded successfully!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
