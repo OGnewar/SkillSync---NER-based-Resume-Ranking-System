@@ -1,17 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <!-- Banner Section -->
 <div class="position-relative">
     <img src="static/images/ban1.jpg" class="img-fluid w-100" alt="Banner">
     <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-        <h1 style="color:black; font-size:75px; font-family: 'Barlow', sans-serif;">SkillSync</h1>
+        {# <h1 style="color:black; font-size:75px; font-family: 'Barlow', sans-serif;">SkillSync</h1> #}
+        <img src="/static/images/skillSync6.png" style="width:300px;">
         <p style="color:black; font-size:20px; font-family: 'Barlow', sans-serif;">NER based resume ranking system</p>
     </div>
 </div>
 
-<div class="jumbotron">
-    <p style="color:black; font-size:20px; font-family: 'Barlow', sans-serif;">Welcome to the SkillSync Page</p>
+<!-- Content -->
+<div class="jumbotron" style="margin-bottom:0px;">
+    <p style="color:black; font-size:30px; font-family: 'Barlow', sans-serif; text-align: center;">Welcome to the SkillSync Home Page!</p>
+    <hr>
+    <p style="color:black; font-size:18px; font-family: 'Barlow', sans-serif; text-align: justify;">If you've somehow landed on this page, you might be wondering what "SkillSync" actually is. Well, this page answers it all. Basically, SkillSync is a NER based resume ranking system. End of story. Huh? What's that? You need more info? Well if you insist, then I suppose I'll tell you.</p>
+    <p style="color:black; font-size:18px; font-family: 'Barlow', sans-serif; text-align: justify;">SkillSync is a system that allows users to upload job description along with multiple resumes. The system then users a custom NER model to extract important features form the job description and resumes. The features from each resumes are compared against the features of the job description. Overall match scores between the resumes and the job description are calculated and based on these scores the resumes are ranked. SkillSync offers a seamless and user friendly interface for these functionalities and abstracts the complex inner workings of the system from the user. But not only that, SkillSync has features that allow users to parse their resumes and job description.</p>
+    <p style="color:black; font-size:18px; font-family: 'Barlow', sans-serif; text-align: justify;">In this modern world where the number of jobs and potential candidates are increasing day by day, companies require an automated tool that allows them to shortlist hundreds and thousands of resumes. Manual screening introduces error, human bias and is tedious and time consuming. With the help of SkillSync companies can efficiently screen through numerous resumes quickly and with little to no resources. All you need is a stable internet connection to access and use this application. Aside from the corporate environment, you as an individual can use this application to parse their resumes to get insight into their skillset in a structured format. This allows them to tweak their resumes to best fit the job that they are applying for, hence increasing their chances of getting hired.</p>
+    <p style="color:black; font-size:18px; font-family: 'Barlow', sans-serif; text-align: justify;">What's that? You say you're head hurts from all the information dump. You're the one who asked for it, you know. Oh, you also want to know how it works? Well then, head over to the <a class="text-reset" style="text-decoration:none; font-weight:bold;" href="{{ url_for('intro') }}">instruction page</a>.
+</div>
+
+<!-- Carousel -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" >
+        <img src="/static/images/resume1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="/static/images/resume2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="/static/images/resume3.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="/static/images/resume4.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="/static/images/resume5.jpg" class="d-block w-100" alt="...">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </div>
 {% endblock %}

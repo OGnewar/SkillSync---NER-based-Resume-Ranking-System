@@ -8,12 +8,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from modules.pdf_utils import extract_text_from_pdf
-from modules.feature_extract_job import job_extract_features
-from modules.feature_extract_res import res_extract_features
-from modules.extract_job_features import extract_job_features
-from modules.extract_res_features import extract_res_features
+# from modules.feature_extract_job import job_extract_features
+# from modules.feature_extract_res import res_extract_features
+# from modules.extract_job_features import extract_job_features
+# from modules.extract_res_features import extract_res_features
+# from modules.preprocess_text import preprocess_text
 from modules.similarity.similarity import calculate_similarity
-from modules.preprocess_text import preprocess_text
 
 from modules.features.exResFeats import exResFeats
 from modules.features.exJobFeats import exJobFeats
