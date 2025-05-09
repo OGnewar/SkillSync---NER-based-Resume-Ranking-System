@@ -20,6 +20,8 @@ def extract_text_from_pdf(file_path):
     # Allow '@', single hyphen '-', en dash '–', and plus sign '+'
     text = re.sub(r'[^a-zA-Z0-9/.,()@: \n\-–+]', '', text)  # Clean unwanted characters
     text = re.sub(r'\s+', ' ', text)  # Normalize spaces
+    print("-------------------------------")
+    print(f"RESUME TEXT: {text}")
 
     return text.strip()
 
@@ -27,12 +29,18 @@ def extract_text_from_docx(file_path):
     """Extracts text from a DOCX file using python-docx."""
     doc = docx.Document(file_path)
     text = '\n'.join([para.text for para in doc.paragraphs])
+    print("-------------------------------")
+    print(f"RESUME TEXT: {text}")
+    
     return text.strip()
 
 def extract_text_from_txt(file_path):
     """Extracts text from a TXT file."""
     with open(file_path, 'r', encoding='utf-8') as file:
         text = file.read()
+    print("-------------------------------")
+    print(f"RESUME TEXT: {text}")
+    
     return text.strip()
 
 def extract_text(file_path):
