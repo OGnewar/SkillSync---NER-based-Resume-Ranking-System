@@ -40,7 +40,7 @@ def exResFeats (text):
     print(f"DOB: {dob}")
     
     expRoles = validateTerms([ent.text for ent in doc.ents if ent.label_ == "EXP_ROLE"])
-    expYrs = [ent.text for ent in doc.ents if ent.label_ == "EXP_DURATION"]
+    expYrs = validateYears([ent.text for ent in doc.ents if ent.label_ == "EXP_DURATION"])
     expMonths = extract_months(expYrs)
     totalExpMonths = sum(int(month.split()[0]) for month in expMonths)  # Summing all months
     expFields = validateTerms([ent.text for ent in doc.ents if ent.label_ == "EXP_FIELD"])
