@@ -7,12 +7,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from modules.pdf_utils import extract_text_from_pdf
-# from modules.feature_extract_job import job_extract_features
-# from modules.feature_extract_res import res_extract_features
-# from modules.extract_job_features import extract_job_features
-# from modules.extract_res_features import extract_res_features
-# from modules.preprocess_text import preprocess_text
+from modules.exText import extract_text
 from modules.similarity.similarity import calculate_similarity
 
 from modules.features.exResFeats import exResFeats
@@ -114,6 +109,12 @@ UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt'}
+
+def allowed_file(filename):
+    """Check if the file type is allowed."""
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/')
 def skillSync():
     return render_template('skillsync.html')
@@ -122,21 +123,27 @@ def skillSync():
 def intro():
     return render_template('intro.html')
 
-#Resume Parse Page
+# Resume Parse Page
 @app.route('/parse_res', methods=['GET', 'POST'])
 @login_required
 def parse_res():
     if request.method == 'POST':
         resume_file = request.files['resume']
-        if not resume_file:
-            return "No file selected", 400
+
+        if not resume_file or resume_file.filename == '':
+            flash("No file selected!", "error")
+            return redirect(request.url)
+
+        if not allowed_file(resume_file.filename):
+            flash("Invalid file format! Please upload a PDF, DOCX, or TXT file.", "error")
+            return redirect(request.url)
         
         # Save the file
         resume_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(resume_file.filename))
         resume_file.save(resume_path)
 
         # Extract text from PDF
-        resume_text = extract_text_from_pdf(resume_path)
+        resume_text = extract_text(resume_path)
 
         # Extract features using the custom NER model
         resume_features = exResFeats(resume_text)
@@ -199,15 +206,20 @@ def parse_job():
         # Get the uploaded job description file
         job_file = request.files.get('job_description')
 
-        if not job_file:
-            return "Please upload a job description file!", 400
+        if not job_file or job_file.filename == '':
+            flash("No file selected!", "error")
+            return redirect(request.url)
+
+        if not allowed_file(job_file.filename):
+            flash("Invalid file format! Please upload a PDF, DOCX, or TXT file.", "error")
+            return redirect(request.url)
 
         # Save the file
         job_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(job_file.filename))
         job_file.save(job_path)
 
         # Extract text from PDF
-        job_text = extract_text_from_pdf(job_path)
+        job_text = extract_text(job_path)
 
         # Extract features using the custom NER model
         job_features = exJobFeats(job_text)
@@ -253,7 +265,6 @@ def job_details():
     
     return render_template('job_details.html', title=title, company=company, experience=experience, education=education, sectors=sectors, certifications=certifications, hards=hards, softs=softs, tools=tools, products=products, language=language)
 
-
 # Route: Ranking page
 @app.route('/rank', methods=['GET', 'POST'])
 @login_required
@@ -287,7 +298,7 @@ def results():
     resume_paths = request.args.get('resumes').split(',')
 
     # Extract and process job description
-    job_text = extract_text_from_pdf(job_path)
+    job_text = extract_text(job_path)
     #job_features = extract_job_features(job_text)
     
     job_features = exJobFeats(job_text)
@@ -296,7 +307,7 @@ def results():
     ranked_resumes = []
     
     for resume_path in resume_paths:
-        resume_text = extract_text_from_pdf(resume_path)
+        resume_text = extract_text(resume_path)
         #resume_features = extract_res_features(resume_text)
         
         resume_features = exResFeats(resume_text)
@@ -326,12 +337,14 @@ def view_details():
     similarity_score = float(request.args.get('score', 0.0))
 
     # Extract job details
-    job_text = extract_text_from_pdf(job_path)
+    # job_text = extract_text_from_pdf(job_path)
+    job_text = extract_text(job_path)
     job_features = exJobFeats(job_text)
     jobFeats = displayJobFeats(job_features)
 
     # Extract resume details
-    resume_text = extract_text_from_pdf(resume_path)
+    # resume_text = extract_text_from_pdf(resume_path)
+    resume_text = extract_text(resume_path)
     resume_features = exResFeats(resume_text)
     resFeats = displayResFeats(resume_features)
 
