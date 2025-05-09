@@ -1,0 +1,28 @@
+IT Manager | GreenTech Innovations
+Location: New York, USA
+Experience:
+•	5+ years in IT management
+•	At least 2 years in a leadership role
+•	4 years in IT as IT Consultant
+•	Minimum 3 years as a Senior Advisor in IT
+Education:
+•	Bachelor's or Master's degree in Computer Science or Information Technology
+•	Diploma in Business or Finanace
+Certifications:
+•	AWS Certified Developer
+•	Google Cloud Professional Developer
+Hard Skills:
+•	Proficient in Python, Java, and Node.js
+•	Experience with AWS, GCP, Azure
+•	Strong understanding of RESTful API design
+•	Working knowledge of Docker, Kubernetes, and Microservices architecture
+•	Familiarity with CI/CD pipelines
+Soft Skills:
+•	Strong problem-solving skills
+•	Team-oriented and adaptable to fast-paced environments
+•	Excellent time management
+Language Proficiency:
+•	English (Fluent)
+•	Spanish (Intermediate)
+•	Hindi
+•	Nepali

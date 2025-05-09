@@ -1,0 +1,33 @@
+Resume 
+Name: Saujanya Shrestha
+Email: sentake101@gmail.com 
+LinkedIn: linkedin.com/in/saujanyashrestha 
+Phone: +1 (555) 345-6789 
+Date of Birth: April 26, 2003 
+Experience: 
+1.	Deep Learning Specialist, Neural Networks Inc. (2021–Present) 
+Designed and implemented convolutional neural networks (CNNs) for computer vision applications in the automotive industry. 
+2.	AI Researcher, DeepTech Solutions (2017–2021)
+Conducted research on reinforcement learning algorithms to enhance robotics performance.
+3.	ML Scientist, Tarakunj (3 years)
+Taught classes on machine learning and its applications
+Education: 
+1.	Ph.D. in Artificial Intelligence, Massachusetts Institute of Technology (MIT), 2021 
+2.	B.S. in Electrical Engineering, University of California, Berkeley, 2016 
+3.	Bachelor's in Machine Learning
+4.	Diploma in Computer Science
+Certifications: 
+1.	TensorFlow Certified Developer (2021) 
+2.	Machine Learning Specialization (Coursera, 2019) 
+Skills: 
+1.	Hard Skills: TensorFlow, Keras, PyTorch, Python, CNN, RNN, GPU Computing 
+2.	Soft Skills: Problem-Solving, Leadership, Collaboration, Communication 
+Languages: 
+1.	English (Fluent) 
+2.	Spanish (Intermediate) 
+3.	Nepali
+4.	Hindi
+Interests: 
+1.	AI in Autonomous Vehicles 
+2.	Robotics 
+3.	Video Games 

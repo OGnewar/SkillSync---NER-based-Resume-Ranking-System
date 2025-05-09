@@ -16,7 +16,7 @@
                 <label class="form-label" for="job_description" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;" for="resume">Job Description:</label>
                 <!-- Bootstrap Input Group for File Upload -->
                 <div class="input-group" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
-                    <input type="file" class="form-control" id="inputGroupFileJob" name="job_description" accept=".pdf" required>
+                    <input type="file" class="form-control" id="inputGroupFileJob" name="job_description" accept=".pdf,.docx,.txt" required>
                     <button class="btn btn-secondary" type="button" id="uploadButtonJob" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
@@ -26,7 +26,7 @@
                 <label class="form-label" for="resumes" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;" for="resume">Resume(s):</label>
                 <!-- Bootstrap Input Group for File Upload -->
                 <div class="input-group" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;">
-                    <input type="file" class="form-control" id="inputGroupFileRes" name="resumes" multiple required accept=".pdf" required>
+                    <input type="file" class="form-control" id="inputGroupFileRes" name="resumes" multiple required accept=".pdf,.docx,.txt" required>
                     <button class="btn btn-secondary" type="button" id="uploadButtonRes" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
@@ -57,7 +57,27 @@
     <!-- Error Toast (No files Selected) -->
     <div id="errorToastAll" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Ranking unsuccessful!</span></div>
+            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Ranking unsuccessful! No files uploaded</span></div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Warning Toast (Upload button not clicked) -->
+    <div id="warnToastJob" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <img src="static/images/warn.png" style="height:20px; margin-right:8px;">
+                <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select and upload a job post first!</span>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Warning Toast (Upload button not clicked) -->
+    <div id="warnToastRes" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <img src="static/images/warn.png" style="height:20px; margin-right:8px;">
+                <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select and upload a resume first!</span>
+            </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
@@ -139,11 +159,11 @@
         }
         else if (!isUploadedJob) {
             event.preventDefault();
-            showToast("errorToastJob");
+            showToast("warnToastJob");
         }
         else if (!isUploadedRes) {
             event.preventDefault();
-            showToast("errorToastRes");
+            showToast("warnToastRes");
         }
     });
 

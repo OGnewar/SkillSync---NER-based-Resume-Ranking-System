@@ -15,7 +15,7 @@
                 <label class="form-label" style="color:black; font-size:15px; font-family: 'Barlow', sans-serif;" for="resume">Resume:</label>
                 <!-- Bootstrap Input Group for File Upload -->
                 <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile" name="resume" accept=".pdf" required>
+                    <input type="file" class="form-control" id="inputGroupFile" name="resume" accept=".pdf,.docx,.txt" required>
                     <button class="btn btn-secondary" type="button" id="uploadButton" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">Upload</button>
                 </div>
                 <!-- File Name Display (Initially Hidden) -->
@@ -45,6 +45,16 @@
             <div class="toast-body">
                 <img src="static/images/check.png" style="height:20px; margin-right:8px;">
                 <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Resume uploaded successfully!</span>
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- Warning Toast (Upload button not clicked) -->
+    <div id="warnToast" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <img src="static/images/warn.png" style="height:20px; margin-right:8px;">
+                <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select and upload a resume first!</span>
             </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -83,7 +93,7 @@
     document.getElementById("parseButton").addEventListener("click", function(event) {
         if (!isUploaded) {
             event.preventDefault(); // Stop form submission
-            showToast("errorToast"); // Show warning toast
+            showToast("warnToast"); // Show warning toast
         }
     });
 
