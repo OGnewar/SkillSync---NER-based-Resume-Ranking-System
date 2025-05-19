@@ -1,7 +1,8 @@
 import pymupdf
 import re
 import os
-import docx
+from docx import Document
+import mammoth
 
 from modules.multi_column import column_boxes  # Existing function
 
@@ -25,14 +26,68 @@ def extract_text_from_pdf(file_path):
 
     return text.strip()
 
-def extract_text_from_docx(file_path):
-    """Extracts text from a DOCX file using python-docx."""
-    doc = docx.Document(file_path)
-    text = '\n'.join([para.text for para in doc.paragraphs])
-    print("-------------------------------")
-    print(f"RESUME TEXT: {text}")
+# def extract_text_from_docx(file_path):
+#     """Extracts text from a DOCX file using python-docx."""
+#     doc = docx.Document(file_path)
+#     text = '\n'.join([para.text for para in doc.paragraphs])
+#     print("-------------------------------")
+#     print(f"RESUME TEXT: {text}")
     
-    return text.strip()
+#     return text.strip()
+
+# def extract_text_from_docx(file_path):
+#     """
+#     Extracts all visible text from a DOCX file, including paragraphs and table content.
+#     Removes duplicate consecutive lines for cleaner output.
+#     """
+#     try:
+#         doc = Document(file_path)
+#         text_parts = []
+
+#         # Extract paragraphs
+#         for para in doc.paragraphs:
+#             if para.text.strip():
+#                 text_parts.append(para.text.strip())
+
+#         # Extract text from tables
+#         for table in doc.tables:
+#             for row in table.rows:
+#                 for cell in row.cells:
+#                     cell_text = cell.text.strip()
+#                     if cell_text:
+#                         text_parts.append(cell_text)
+
+#         # Remove exact consecutive duplicates
+#         cleaned_text = []
+#         prev = None
+#         for line in text_parts:
+#             if line != prev:
+#                 cleaned_text.append(line)
+#             prev = line
+
+#         return "\n".join(cleaned_text)
+
+#     except Exception as e:
+#         return f"An error occurred: {e}"
+
+def extract_text_from_docx(file_path):
+    """
+    Extracts clean, readable text from a DOCX file using the Mammoth library.
+
+    Parameters:
+    - file_path: str - Path to the .docx file
+
+    Returns:
+    - str - Extracted plain text
+    """
+    try:
+        with open(file_path, "rb") as docx_file:
+            result = mammoth.extract_raw_text(docx_file)
+            print(result.value)
+            return result.value  # plain text
+    except Exception as e:
+        return f"An error occurred: {e}"
+
 
 def extract_text_from_txt(file_path):
     """Extracts text from a TXT file."""

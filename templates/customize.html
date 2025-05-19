@@ -8,26 +8,26 @@
         <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Customize Feature Weights</h1>
         <form method="POST" action="{{ url_for('customize') }}">
             <div class="form-group">
-                <label class="form-label">Experience Weight: <span id="experience_val">{{ weights.experience }}</span></label>
+                <label class="form-label" style="font-family: 'Barlow', sans-serif;">Experience Weight: <span id="experience_val">{{ weights.experience }}</span></label>
                 <input type="range" name="experience_weight" id="experience_weight" min="0" max="1" step="0.01" value="{{ weights.experience }}" class="form-range">
             </div>
             <div class="form-group">
-                <label class="from-label">Education Weight: <span id="education_val">{{ weights.education }}</span></label>
+                <label class="from-label" style="font-family: 'Barlow', sans-serif;">Education Weight: <span id="education_val">{{ weights.education }}</span></label>
                 <input type="range" name="education_weight" id="education_weight" min="0" max="1" step="0.01" value="{{ weights.education }}" class="form-range">
             </div>
             <div class="form-group">
-                <label class="from-label">Skill Weight: <span id="skill_val">{{ weights.skill }}</span></label>
+                <label class="from-label" style="font-family: 'Barlow', sans-serif;">Skill Weight: <span id="skill_val">{{ weights.skill }}</span></label>
                 <input type="range" name="skill_weight" id="skill_weight" min="0" max="1" step="0.01" value="{{ weights.skill }}" class="form-range">
             </div>
             <div class="form-group">
-                <label class="from-label">Language Weight: <span id="language_val">{{ weights.language }}</span></label>
+                <label class="from-label" style="font-family: 'Barlow', sans-serif;">Language Weight: <span id="language_val">{{ weights.language }}</span></label>
                 <input type="range" name="language_weight" id="language_weight" min="0" max="1" step="0.01" value="{{ weights.language }}" class="form-range">
             </div>
             <br>
-            <button type="submit" class="btn btn-dark">Save Weights</button>
+            <button type="submit" class="btn btn-dark" style="font-family: 'Barlow', sans-serif;">Save Weights</button>
         </form>
         <br>
-        <a href="{{ url_for('adminLogout') }}"><button type="button" class="btn btn-outline-dark">Logout</button></a>
+        <a href="{{ url_for('adminLogout') }}"><button type="button" class="btn btn-outline-dark" style="font-family: 'Barlow', sans-serif;">Logout</button></a>
     </div>
 </div>
 
