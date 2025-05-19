@@ -18,29 +18,33 @@ def language_similarity(job, res):
     jobProf = jobLangs.get("langProfs", [])
     resProf = resLangs.get("langProfs", [])
     
-    print("LANGUAGE SIMILARITY")
-    print("------------")
-    print(f"Job Languages: {jobLang}")
-    print(f"Resume Language: {resLang}")
-    print(f"Job Proficiency: {jobProf}")
-    print(f"resume Proficiency: {resProf}")
+    # print("LANGUAGE SIMILARITY")
+    # print("------------")
+    # print(f"Job Languages: {jobLang}")
+    # print(f"Resume Language: {resLang}")
+    # print(f"Job Proficiency: {jobProf}")
+    # print(f"resume Proficiency: {resProf}")
     
     jobLangStr = ", ".join(jobLang)
     resLangStr = ", ".join(resLang)
     
     langScore = cosine_similarity(jobLangStr, resLangStr)
     
-    print(f"Language Score: {langScore}")
+    # print(f"Language Score: {langScore}")
     
     prof = {
-        "Basic": 1, "basic": 1, "Basics": 1, "baiscs": 1, "intermediate": 2, "Intermediate": 2, "Intermed": 2, "Conversational": 2.5, "fluent": 3, "fluency": 3, "Fluent": 3, "advanced": 4, "Advanced": 4
+        "Basic": 1, "basic": 1, "Basics": 1, "baiscs": 1,
+        "intermediate": 2, "Intermediate": 2, "Intermed": 2,
+        "Conversational": 2.5,
+        "fluent": 3, "fluency": 3, "Fluent": 3,
+        "advanced": 4, "Advanced": 4
     }
     
     jobLangProf = [prof.get(pro, -1) for pro in jobProf]
     resLangProf = [prof.get(pro, -1) for pro in resProf]
     
-    print(f"Job Proficiency: {jobLangProf}")
-    print(f"Resume Proficiency: {resLangProf}")
+    # print(f"Job Proficiency: {jobLangProf}")
+    # print(f"Resume Proficiency: {resLangProf}")
     
     if not jobLangProf or not resLangProf:
         return 0.0
@@ -54,7 +58,7 @@ def language_similarity(job, res):
         diff = minJobProf - maxResProf
         proScore = max(0, 1.0 - (diff / 3))  # Normalize difference with max priority 3
 
-    print(f"Proficiency Score: {proScore}")
+    # print(f"Proficiency Score: {proScore}")
     
     weights = {
         "lang": 0.5,
@@ -67,7 +71,7 @@ def language_similarity(job, res):
     
     score = 0.5 * langScore + 0.5 * proScore
     
-    print("---------------")
+    # print("---------------")
     
     return round(score, 4)
 

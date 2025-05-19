@@ -50,6 +50,13 @@
                     <a class="nav-link" href="{{ url_for('aboutUs') }}" style="font-family: 'Barlow', sans-serif;">About Us</a>
                 </li>
             </ul>
+            {% if session.get('admin_logged_in') %}
+            <a href="{{ url_for('customize') }}" class="btn btn-outline-dark" style="font-size:15px; font-family: 'Barlow', sans-serif; margin-right:10px;">Customize</a>
+            <!--- <a href="{{ url_for('adminLogout') }}" class="btn btn-outline-dark" style="font-size:15px; font-family: 'Barlow', sans-serif; margin-right:10px;">Logout</a>-->
+            {% else %}
+            <a href="{{ url_for('adminLogin') }}" class="btn btn-outline-dark" style="font-size:15px; font-family: 'Barlow', sans-serif; margin-right:10px;">Admin Login</a>
+            {% endif %}
+
             {% if session['user'] %}
             <a href="{{ url_for('login') }}"><img src="{{ session['user']['picture'] }}" alt="Profile Picture" class="profile-pic"></a>
             {% else %}
@@ -80,12 +87,12 @@
         <!-- Left -->
         <!-- Right -->
         <div>
-            <a href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System" class="me-4 text-reset"><img src="static/images/github.png" height=25px width="25px"></a>
-            <a href="https://www.google.com/" class="me-4 text-reset"><img src="static/images/google.png" height=25px width="25px"></a>
-            <a href="https://www.linkedin.com/home" class="me-4 text-reset"><img src="static/images/linkedin.png" height=25px width="25px"></a>
-            <a href="https://www.instagram.com/" class="me-4 text-reset"><img src="static/images/instagram.png" height=25px width="25px"></a>
-            <a href="https://x.com/?mx=2" class="me-4 text-reset"><img src="static/images/twitter.png" height=25px width="25px"></a>
-            <a href="https://www.youtube.com/" class="me-4 text-reset"><img src="static/images/youtube.png" height=25px width="25px"></a>
+            <a href="https://github.com/OGnewar/SkillSync---NER-based-Resume-Ranking-System" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/github.png') }}" height=25px width="25px"></a>
+            <a href="https://www.google.com/" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/google.png') }}" height=25px width="25px"></a>
+            <a href="https://www.linkedin.com/home" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/linkedin.png') }}" height=25px width="25px"></a>
+            <a href="https://www.instagram.com/" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/instagram.png') }}" height=25px width="25px"></a>
+            <a href="https://x.com/?mx=2" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/twitter.png') }}" height=25px width="25px"></a>
+            <a href="https://www.youtube.com/" class="me-4 text-reset"><img src="{{ url_for('static', filename='images/youtube.png') }}" height=25px width="25px"></a>
         </div>
         <!-- Right -->
     </section>
@@ -129,10 +136,10 @@
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <!-- Links -->
                 <h6 class="text-uppercase fw-bold mb-4"><span style="font-family: 'Barlow', sans-serif;">Contact</span></h6>
-                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/map.png" height="25px" width="20px" style="opacity:0.5;"> Lamachaur, Pokhara-16</p>
-                <p><a href="{{url_for('aboutUs')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;"><img src="static/images/page.png" height="20px" width="20px" style="opacity:0.5;"> About Us</a></p>
-                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/mail.png" height="20px" width="20px" style="opacity:0.5;">  sentake101@gmail.com</p>
-                <p style="font-family: 'Barlow', sans-serif;"><img src="static/images/phone.png" height="20px" width="20px" style="opacity:0.5;"> 9846123456</p>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="{{ url_for('static', filename='images/map.png') }}" height="25px" width="20px" style="opacity:0.5;"> Lamachaur, Pokhara-16</p>
+                <p><a href="{{url_for('aboutUs')}}" class="text-reset" style="text-decoration:none; font-family: 'Barlow', sans-serif;"><img src="{{ url_for('static', filename='images/page.png') }}" height="20px" width="20px" style="opacity:0.5;"> About Us</a></p>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="{{ url_for('static', filename='images/mail.png') }}" height="20px" width="20px" style="opacity:0.5;">  sentake101@gmail.com</p>
+                <p style="font-family: 'Barlow', sans-serif;"><img src="{{ url_for('static', filename='images/phone.png') }}" height="20px" width="20px" style="opacity:0.5;"> 9846123456</p>
             <!-- Grid column -->
             </div>
             <!-- Grid row -->

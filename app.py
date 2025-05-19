@@ -6,19 +6,31 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 import os
 from dotenv import load_dotenv
 load_dotenv()
-
 from modules.exText import extract_text
 from modules.similarity.similarity import calculate_similarity
-
 from modules.features.exResFeats import exResFeats
 from modules.features.exJobFeats import exJobFeats
 from modules.features.displayResFeats import displayResFeats
 from modules.features.displayJobFeats import displayJobFeats
 from modules.features.compJobFeats import compJobFeats
 from modules.features.compResFeats import compResFeats
+from functools import wraps
+from config import ADMINS
+from flask import send_file
+import io
 
 # Initialize Flask app
 app = Flask(__name__)
+
+DEFAULT_WEIGHTS = {
+    'experience': 0.3,
+    'education': 0.2,
+    'skill': 0.4,
+    'language': 0.1
+}
+
+def get_current_weights():
+    return session.get('weights', DEFAULT_WEIGHTS)
 
 # Google OAuth configuration
 oauth = OAuth(app)
@@ -100,6 +112,7 @@ def authorized():
 @app.route("/logout")
 @login_required
 def logout():
+    logout_user()
     session.pop('user', None)
     session.clear()
     return redirect(url_for('login'))  # Redirect back to login page
@@ -114,6 +127,38 @@ ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt'}
 def allowed_file(filename):
     """Check if the file type is allowed."""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Decorator to restrict access to admins
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'admin_logged_in' not in session:
+            flash('You must be logged in as admin to access this page.', 'danger')
+            return redirect(url_for('adminLogin'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Admin login page
+@app.route('/admin/adminLogin', methods=['GET', 'POST'])
+def adminLogin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in ADMINS and ADMINS[username] == password:
+            session['admin_logged_in'] = True
+            session['admin_username'] = username
+            flash('Logged in successfully as admin.', 'success')
+            return redirect(url_for('customize'))
+        else:
+            flash('Invalid admin credentials.', 'danger')
+    return render_template('adminLogin.html')
+
+# Admin logout
+@app.route('/admin/adminLogout')
+def adminLogout():
+    session.pop('admin_logged_in', None)
+    flash('Logged out successfully.', 'info')
+    return redirect(url_for('skillSync'))
 
 @app.route('/')
 def skillSync():
@@ -322,7 +367,15 @@ def results():
     # Sort resumes by overall similarity score in descending order
     ranked_resumes.sort(key=lambda x: x[1], reverse=True)
 
-    return render_template('results.html', ranked_resumes=ranked_resumes, job_path=job_path)
+    # Extract the filenames (or identifiers) from the resumes
+    resume_filenames = ','.join([r[0] for r in ranked_resumes])
+    
+    return render_template(
+        'results.html',
+        ranked_resumes=ranked_resumes,
+        job_path=job_path,
+        resume_filenames=resume_filenames
+    )
 
 @app.route('/view_details')
 def view_details():
@@ -337,16 +390,30 @@ def view_details():
     similarity_score = float(request.args.get('score', 0.0))
 
     # Extract job details
-    # job_text = extract_text_from_pdf(job_path)
     job_text = extract_text(job_path)
     job_features = exJobFeats(job_text)
     jobFeats = displayJobFeats(job_features)
 
     # Extract resume details
-    # resume_text = extract_text_from_pdf(resume_path)
     resume_text = extract_text(resume_path)
     resume_features = exResFeats(resume_text)
     resFeats = displayResFeats(resume_features)
+
+    # Use session weights if admin is logged in, otherwise use default weights
+    if session.get('admin_logged_in'):
+        weights = session.get('weights', {
+            'experience': 0.3,
+            'education': 0.2,
+            'skill': 0.4,
+            'language': 0.1
+        })
+    else:
+        weights = {
+            'experience': 0.3,
+            'education': 0.2,
+            'skill': 0.4,
+            'language': 0.1
+        }
 
     return render_template(
         'view_details.html',
@@ -356,12 +423,83 @@ def view_details():
         experience_match=experience_match,
         education_match=education_match,
         skill_match=skill_match,
-        language_match=language_match
+        language_match=language_match,
+        weights=weights
     )
 
 @app.route('/aboutUs')
 def aboutUs():
     return render_template('about.html')
+
+@app.route('/customize', methods=['GET', 'POST'])
+@admin_required
+def customize():
+    if request.method == 'POST':
+        try:
+            exp = float(request.form.get('experience_weight'))
+            edu = float(request.form.get('education_weight'))
+            skill = float(request.form.get('skill_weight'))
+            lang = float(request.form.get('language_weight'))
+
+            total = exp + edu + skill + lang
+            if total == 0:
+                raise ValueError("Total weight cannot be zero.")
+
+            # Normalize weights
+            session['weights'] = {
+                'experience': exp / total,
+                'education': edu / total,
+                'skill': skill / total,
+                'language': lang / total
+            }
+            return redirect(url_for('rank'))
+        except Exception as e:
+            return f"Error: {e}", 400
+
+    current_weights = session.get('weights', {
+        'experience': 0.3,
+        'education': 0.2,
+        'skill': 0.4,
+        'language': 0.1
+    })
+    return render_template('customize.html', weights=current_weights)
+
+@app.route('/download_results', methods=['POST'])
+def download_results():
+
+    # Extract data sent from the form as hidden fields
+    job_path = request.form.get('job_path')
+    resume_paths = request.form.get('resumes').split(',')
+
+    job_text = extract_text(job_path)
+    job_features = exJobFeats(job_text)
+    jobFeats = compJobFeats(job_features)
+
+    ranked_resumes = []
+
+    for resume_path in resume_paths:
+        resume_text = extract_text(resume_path)
+        resume_features = exResFeats(resume_text)
+        resFeats = compResFeats(resume_features)
+
+        similarity_results = calculate_similarity(jobFeats, resFeats)
+        overall_similarity_score = similarity_results["overall_similarity_score"]
+
+        ranked_resumes.append((resume_path, overall_similarity_score, similarity_results, resFeats))
+
+    # Sort ranked resumes
+    ranked_resumes.sort(key=lambda x: x[1], reverse=True)
+
+    # Render the downloadable HTML
+    html = render_template('download_results.html', ranked_resumes=ranked_resumes)
+
+    # Serve it as a downloadable HTML file
+    return send_file(
+        io.BytesIO(html.encode('utf-8')),
+        mimetype='text/html',
+        as_attachment=True,
+        download_name='ranked_results.html'
+    )
 
 if __name__ == '__main__':
     app.run(debug=True)

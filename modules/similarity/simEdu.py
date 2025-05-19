@@ -21,14 +21,14 @@ def education_similarity(job, res):
     jobCert = jobEdu.get("certifications", [])
     resCert = resEdu.get("certifications", [])
     
-    print("EDUCATION SIMILARITY")
-    print("--------------")
-    print(f"Job Field: {jobFld}")
-    print(f"Resume Field: {resFld}")
-    print(f"Job Degrees: {jobDeg}")
-    print(f"Resume Degrees: {resDeg}")
-    print(f"Job Certifications: {jobCert}")
-    print(f"Resume Certifications: {resCert}")
+    # print("EDUCATION SIMILARITY")
+    # print("--------------")
+    # print(f"Job Field: {jobFld}")
+    # print(f"Resume Field: {resFld}")
+    # print(f"Job Degrees: {jobDeg}")
+    # print(f"Resume Degrees: {resDeg}")
+    # print(f"Job Certifications: {jobCert}")
+    # print(f"Resume Certifications: {resCert}")
     
     jobFldStr = ", ".join(jobFld)
     resFldStr = ", ".join(resFld)
@@ -38,18 +38,22 @@ def education_similarity(job, res):
     fldScore = cosine_similarity(jobFldStr, resFldStr)
     certScore = cosine_similarity(jobCertStr, resCertStr)
     
-    print(f"Field Score: {fldScore}")
-    print(f"Certification Score: {certScore}")
+    # print(f"Field Score: {fldScore}")
+    # print(f"Certification Score: {certScore}")
 
     degPriority = {
-        "Undergraduate": 1, "Diploma": 1.5, "Bachelor": 2, "Bachelor's": 2, "Bachelor’s degree": 2, "B.S.": 2, "B.Sc": 2, "B.S": 2, "B.Tech": 2, "Bachelors degree": 2, "Master's": 3, "Masters": 3, "Ph.D": 4, "Ph.D.": 4, "Graduate": 1.5, "Postgraduate": 2
+        "Undergraduate": 1,
+        "Diploma": 1.5, "Graduate": 1.5,
+        "Bachelor": 2, "Bachelor's": 2, "Bachelor’s degree": 2, "B.S.": 2, "B.Sc": 2, "B.S": 2, "B.Tech": 2, "Bachelors degree": 2, "Postgraduate": 2,
+        "Master's": 3, "Masters": 3,
+        "Ph.D": 4, "Ph.D.": 4
     }
     
     jobDegPrt = [degPriority.get(deg, -1) for deg in jobDeg]
     resDegPrt = [degPriority.get(deg, -1) for deg in resDeg]
     
-    print(f"Job Degrees: {jobDegPrt}")
-    print(f"Resume Degrees: {resDegPrt}")
+    # print(f"Job Degrees: {jobDegPrt}")
+    # print(f"Resume Degrees: {resDegPrt}")
     
     if not jobDegPrt or not resDegPrt:
         return 0.0
@@ -72,7 +76,7 @@ def education_similarity(job, res):
             degScore = max(0, 1.0 - (diff / 3))
             degScore /= 2
             
-    print(f"Degree Score: {degScore}")
+    # print(f"Degree Score: {degScore}")
     
     weights = {
         "field": 0.5,
@@ -86,7 +90,7 @@ def education_similarity(job, res):
         
     score = weights["field"] * fldScore + weights["degree"] * degScore + weights["cert"] * certScore
 
-    print("---------------")
+    # print("---------------")
     
     return round(score, 4)
 

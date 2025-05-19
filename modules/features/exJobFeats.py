@@ -17,7 +17,7 @@ from modules.features.standardTerms import standardizeTerms
 
 import spacy
 
-# Load SpaCy NER model and Sentence BERT model
+# Load SpaCy NER model
 job_spacy_model_path = "assets/JD_Model/output/model-best"
 job_ner_model = spacy.load(job_spacy_model_path)
 

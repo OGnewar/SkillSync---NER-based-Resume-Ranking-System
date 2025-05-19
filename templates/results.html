@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
-        <img src="static/images/ranking.png" height="50px" style="display: block; margin: auto;">
+        <img src="{{ url_for('static', filename='images/ranking.png') }}" height="50px" style="display: block; margin: auto;">
         <br>
         <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Ranked Resumes</h1>
         <hr>
@@ -47,12 +47,19 @@
         </table>
 
         <br>
-        <div class="d-grid justify-content-center">
+        <div class="d-flex justify-content-center gap-3">
             <a href="{{ url_for('rank') }}">
                 <button type="button" class="btn btn-dark btn-lg" style="color:white; font-size:15px; font-family: 'Barlow', sans-serif;">
                     Go Back
                 </button>
             </a>
+            <form method="post" action="{{ url_for('download_results') }}">
+                <input type="hidden" name="job_path" value="{{ job_path }}">
+                <input type="hidden" name="resumes" value="{{ resume_filenames }}">
+                <button type="submit" class="btn btn-outline-dark" style="font-size:15px; font-family: 'Barlow', sans-serif;">
+                    Download Results
+                </button>
+            </form>
         </div>
     </div>
 </div>

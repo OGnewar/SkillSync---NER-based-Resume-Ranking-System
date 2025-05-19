@@ -4,3 +4,4 @@ assets/Res_Model/
 assets/
 client/
 /.env
+config.py

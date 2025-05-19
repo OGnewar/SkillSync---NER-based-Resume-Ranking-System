@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
-        <img src="static/images/resume.png" height="50px" style="display: block; margin: auto;">
+        <img src="{{ url_for('static', filename='images/resume.png') }}" height="50px" style="display: block; margin: auto;">
         <br>
         <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Parsed Resume Details</h1>
         <hr>
@@ -124,7 +124,7 @@
             {% for category, message in messages %}
                 <div class="toast align-items-center text-bg-success border-0 w-auto" id="parseToast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
-                        <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">{{ message }}</span></div>
+                        <div class="toast-body"><img src="{{ url_for('static', filename='images/check.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">{{ message }}</span></div>
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>

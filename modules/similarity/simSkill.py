@@ -21,21 +21,21 @@ def skill_similarity(job, res):
     resToo = resSkills.get("tools", [])
     jobProd = jobSkills.get("products", [])
     resProd = resSkills.get("products", [])
-    jobFld = jobSkills.get("eduFields", []) + resSkills.get("expFields", [])
-    resFld = resSkills.get("eduFields", [])
+    jobFld = jobSkills.get("eduFields", []) + jobSkills.get("expFields", [])
+    resFld = resSkills.get("eduFields", []) + resSkills.get("expFields", [])
     
-    print("SKILLS SIMILARITY")
-    print("---------------")
-    print(f"Job Hard Skills: {jobHar}")
-    print(f"Resume Hard Skills: {resHar}")
-    print(f"Job Soft Skills: {jobSof}")
-    print(f"Resume Soft Skills: {resSof}")
-    print(f"Job Tools: {jobToo}")
-    print(f"Resume Tools: {resToo}")
-    print(f"Job Products: {jobProd}")
-    print(f"Resume Products: {resProd}")
-    print(f"Job Fields: {jobFld}")
-    print(f"Resume Fields: {resFld}")
+    # print("SKILLS SIMILARITY")
+    # print("---------------")
+    # print(f"Job Hard Skills: {jobHar}")
+    # print(f"Resume Hard Skills: {resHar}")
+    # print(f"Job Soft Skills: {jobSof}")
+    # print(f"Resume Soft Skills: {resSof}")
+    # print(f"Job Tools: {jobToo}")
+    # print(f"Resume Tools: {resToo}")
+    # print(f"Job Products: {jobProd}")
+    # print(f"Resume Products: {resProd}")
+    # print(f"Job Fields: {jobFld}")
+    # print(f"Resume Fields: {resFld}")
     
     jobHarStr = ", ".join(jobHar)
     resHarStr = ", ".join(resHar)
@@ -54,11 +54,11 @@ def skill_similarity(job, res):
     proScore = cosine_similarity(jobProStr, resProStr)
     fldScore = cosine_similarity(jobFldStr, resFldStr)
     
-    print(f"Hard Skill Score: {harScore}")
-    print(f"Soft Skill Score: {sofScore}")
-    print(f"Tools Score: {tooScore}")
-    print(f"Products Score: {proScore}")
-    print(f"Field Score: {fldScore}")
+    # print(f"Hard Skill Score: {harScore}")
+    # print(f"Soft Skill Score: {sofScore}")
+    # print(f"Tools Score: {tooScore}")
+    # print(f"Products Score: {proScore}")
+    # print(f"Field Score: {fldScore}")
     
     weights = {
         "hard": 0.25,
@@ -91,7 +91,7 @@ def skill_similarity(job, res):
         
     score = weights["hard"] * harScore + weights["tools"] * tooScore + weights["products"] * proScore + weights["soft"] * sofScore + weights["field"] * fldScore
     
-    print("---------------")
+    # print("---------------")
     
     return round(score, 4)
 

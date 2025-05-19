@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <img src="{{ url_for('static', filename='images/equalizer.png') }}" height="50px" style="display: block; margin: auto;" alt="equalizer">
+        <br>
+        <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Customize Feature Weights</h1>
+        <form method="POST" action="{{ url_for('customize') }}">
+            <div class="form-group">
+                <label class="form-label">Experience Weight: <span id="experience_val">{{ weights.experience }}</span></label>
+                <input type="range" name="experience_weight" id="experience_weight" min="0" max="1" step="0.01" value="{{ weights.experience }}" class="form-range">
+            </div>
+            <div class="form-group">
+                <label class="from-label">Education Weight: <span id="education_val">{{ weights.education }}</span></label>
+                <input type="range" name="education_weight" id="education_weight" min="0" max="1" step="0.01" value="{{ weights.education }}" class="form-range">
+            </div>
+            <div class="form-group">
+                <label class="from-label">Skill Weight: <span id="skill_val">{{ weights.skill }}</span></label>
+                <input type="range" name="skill_weight" id="skill_weight" min="0" max="1" step="0.01" value="{{ weights.skill }}" class="form-range">
+            </div>
+            <div class="form-group">
+                <label class="from-label">Language Weight: <span id="language_val">{{ weights.language }}</span></label>
+                <input type="range" name="language_weight" id="language_weight" min="0" max="1" step="0.01" value="{{ weights.language }}" class="form-range">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark">Save Weights</button>
+        </form>
+        <br>
+        <a href="{{ url_for('adminLogout') }}"><button type="button" class="btn btn-outline-dark">Logout</button></a>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const sliders = [
+        { id: "experience_weight", label: "experience_val" },
+        { id: "education_weight", label: "education_val" },
+        { id: "skill_weight", label: "skill_val" },
+        { id: "language_weight", label: "language_val" }
+    ];
+
+    function updateLabelsAndNormalize(changedId) {
+        // Get all slider values
+        let total = 0;
+        let values = {};
+        sliders.forEach(s => {
+            values[s.id] = parseFloat(document.getElementById(s.id).value);
+            total += values[s.id];
+        });
+
+        // Normalize so total == 1.0
+        sliders.forEach(s => {
+            let normalized = values[s.id] / total;
+            document.getElementById(s.id).value = normalized.toFixed(2);
+            document.getElementById(s.label).innerText = normalized.toFixed(2);
+        });
+    }
+
+    sliders.forEach(s => {
+        const slider = document.getElementById(s.id);
+        slider.addEventListener("input", () => updateLabelsAndNormalize(s.id));
+    });
+
+    // Initial update on load
+    updateLabelsAndNormalize();
+});
+</script>
+
+<style>
+/* Style for WebKit browsers (Chrome, Edge, Safari) */
+input[type=range].form-range::-webkit-slider-thumb {
+    background-color: #343a40; /* Bootstrap dark color */
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+}
+
+/* Firefox */
+input[type=range].form-range::-moz-range-thumb {
+    background-color: #343a40;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Optional: make the track slightly lighter */
+input[type=range].form-range::-webkit-slider-runnable-track {
+    background-color: #dee2e6;
+    height: 5px;
+    border-radius: 3px;
+}
+input[type=range].form-range::-moz-range-track {
+    background-color: #dee2e6;
+    height: 5px;
+    border-radius: 3px;
+}
+</style>
+
+{% endblock %}

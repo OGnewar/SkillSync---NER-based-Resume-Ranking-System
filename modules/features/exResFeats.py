@@ -16,7 +16,7 @@ from modules.features.standardTerms import standardizeTerms
 
 import spacy
 
-# Load SpaCy NER model and Sentence BERT model
+# Load SpaCy NER model
 res_spacy_model_path = "assets/Res_Model/output/model-best"
 res_ner_model = spacy.load(res_spacy_model_path)
 

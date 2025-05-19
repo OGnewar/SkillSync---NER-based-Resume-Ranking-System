@@ -1,6 +1,3 @@
-import re
-from dateparser import parse
-from datetime import datetime
 from sentence_transformers import SentenceTransformer, util
 from modules.features.exMnths import extract_months
 
@@ -39,27 +36,27 @@ def experience_similarity(job, res):
     jobSectors = jobDetails.get("sectors", [])
     resSectors = resDetails.get("sectors", [])
     
-    print("EXPERIENCE SIMILARITY")
-    print("------------------")
-    print(f"Job Titles: {jobTitles}")
-    print(f"Resume Roles: {resRoles}")
-    print(f"Job Roles: {jobRoles}")
-    print(f"Job Fields: {jobFields}")
-    print(f"Resume Fields: {resFields}")
-    print(f"Job Years: {jobYrs}")
-    print(f"Job Months: {jobMonths}")
-    print(f"Job Total Months: {jobMnths}")
-    print(f"Resume Years: {resYrs}")
-    print(f"Resume Months: {resMonths}")
-    print(f"Resume Total Months: {resMnths}")
-    #print(f"Job Hard Skills: {jobHardSkills}")
-    #print(f"Resume Hard Skills: {resHardSkills}")
-    #print(f"Job Tools: {jobTools}")
-    #print(f"Job Resume Tools: {resTools}")
-    #print(f"Job Products: {jobProds}")
-    #print(f"Resume Products: {resProds}")
-    print(f"Job Sectors: {jobSectors}")
-    print(f"Resume Sectors: {resSectors}")
+    # print("EXPERIENCE SIMILARITY")
+    # print("------------------")
+    # print(f"Job Titles: {jobTitles}")
+    # print(f"Resume Roles: {resRoles}")
+    # print(f"Job Roles: {jobRoles}")
+    # print(f"Job Fields: {jobFields}")
+    # print(f"Resume Fields: {resFields}")
+    # print(f"Job Years: {jobYrs}")
+    # print(f"Job Months: {jobMonths}")
+    # print(f"Job Total Months: {jobMnths}")
+    # print(f"Resume Years: {resYrs}")
+    # print(f"Resume Months: {resMonths}")
+    # print(f"Resume Total Months: {resMnths}")
+    # #print(f"Job Hard Skills: {jobHardSkills}")
+    # #print(f"Resume Hard Skills: {resHardSkills}")
+    # #print(f"Job Tools: {jobTools}")
+    # #print(f"Job Resume Tools: {resTools}")
+    # #print(f"Job Products: {jobProds}")
+    # #print(f"Resume Products: {resProds}")
+    # print(f"Job Sectors: {jobSectors}")
+    # print(f"Resume Sectors: {resSectors}")
     
     # Convert features to strings
     jobTitStr = ", ".join(jobTitles)
@@ -85,13 +82,13 @@ def experience_similarity(job, res):
     prodScore = cosine_similarity(jobProStr, resProStr)
     secScore = cosine_similarity(jobSecStr, resSecStr)
     
-    print(f"Title Score: {titleScore}")
-    print(f"Role Score: {rolScore}")
-    print(f"Field Score: {fldScore}")
-    print(f"Hard Skill Score: {hadScore}")
-    print(f"Tools Score: {tooScore}")
-    print(f"Products Score: {prodScore}")
-    print(f"Sector Score: {secScore}")
+    # print(f"Title Score: {titleScore}")
+    # print(f"Role Score: {rolScore}")
+    # print(f"Field Score: {fldScore}")
+    # print(f"Hard Skill Score: {hadScore}")
+    # print(f"Tools Score: {tooScore}")
+    # print(f"Products Score: {prodScore}")
+    # print(f"Sector Score: {secScore}")
     
     # Assign Weights
     preScoreWeights = {
@@ -125,10 +122,10 @@ def experience_similarity(job, res):
         
     preScore = preScoreWeights["title"] * titleScore + preScoreWeights["role"] * rolScore + preScoreWeights["field"] * fldScore + preScoreWeights["hard"] * hadScore + preScoreWeights["tools"] * tooScore + preScoreWeights["products"] * prodScore + preScoreWeights["sectors"] * secScore
     
-    print(f"Pre Score: {preScore}")
+    # print(f"Pre Score: {preScore}")
     
     factor = preScore ** 2
-    print(f"Factor: {factor}")
+    # print(f"Factor: {factor}")
     
     durationScore = 0.0
     
@@ -144,7 +141,7 @@ def experience_similarity(job, res):
             durationScore = 1 - abs(jobMnths - resMnths) / max(jobMnths, resMnths) if max(jobMnths, resMnths) > 0 else 0
             durationScore /= 2
         
-    print(f"Duration Score: {durationScore}")
+    # print(f"Duration Score: {durationScore}")
     
     totalScoreWeight = {
         "pre": 0.5,
@@ -157,7 +154,7 @@ def experience_similarity(job, res):
         
     totalScore = totalScoreWeight["pre"] * preScore + totalScoreWeight["mnth"] * durationScore
 
-    print("---------------")
+    # print("---------------")
     
     return min(totalScore, 1.0)
 

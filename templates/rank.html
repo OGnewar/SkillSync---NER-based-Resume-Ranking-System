@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
     <div class="jumbotron">
-        <img src="static/images/ranking.png" height="50px" style="display: block; margin: auto;">
+        <img src="{{ url_for('static', filename='images/ranking.png') }}" height="50px" style="display: block; margin: auto;">
         <br>
         <h1 style="text-align:center; color:black; font-size:30px; font-family: 'Barlow', sans-serif;">Resume Ranking</h1>
         <hr>
@@ -43,21 +43,21 @@
     <!-- Error Toast (No Job Selected) -->
     <div id="errorToastJob" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select a job description first!</span></div>
+            <div class="toast-body"><img src="{{ url_for('static', filename='images/cross.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select a job description first!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Error Toast (No Resume Selected) -->
     <div id="errorToastRes" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select resume(s) first!</span></div>
+            <div class="toast-body"><img src="{{ url_for('static', filename='images/cross.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select resume(s) first!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Error Toast (No files Selected) -->
     <div id="errorToastAll" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/cross.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Ranking unsuccessful! No files uploaded</span></div>
+            <div class="toast-body"><img src="{{ url_for('static', filename='images/cross.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Ranking unsuccessful! No files uploaded</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
@@ -65,7 +65,7 @@
     <div id="warnToastJob" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-                <img src="static/images/warn.png" style="height:20px; margin-right:8px;">
+                <img src="{{ url_for('static', filename='images/warn.png') }}" style="height:20px; margin-right:8px;">
                 <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select and upload a job post first!</span>
             </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -75,7 +75,7 @@
     <div id="warnToastRes" class="toast align-items-center text-bg-danger border-0 w-auto h-auto" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-                <img src="static/images/warn.png" style="height:20px; margin-right:8px;">
+                <img src="{{ url_for('static', filename='images/warn.png') }}" style="height:20px; margin-right:8px;">
                 <span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Please select and upload a resume first!</span>
             </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -84,14 +84,14 @@
     <!-- Job Success Toast -->
     <div id="successToastJob" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Job post uploaded successfully!<span></div>
+            <div class="toast-body"><img src="{{ url_for('static', filename='images/check.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Job post uploaded successfully!<span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
     <!-- Resume Success Toast -->
     <div id="successToastRes" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
-            <div class="toast-body"><img src="static/images/check.png" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Resume(s) uploaded successfully!</span></div>
+            <div class="toast-body"><img src="{{ url_for('static', filename='images/check.png') }}" style="height:20px; margin-right:8px;"><span style="color:black; font-size:14px; font-family: 'Barlow', sans-serif;">Resume(s) uploaded successfully!</span></div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>

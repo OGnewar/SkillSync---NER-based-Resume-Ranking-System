@@ -8,7 +8,7 @@
     <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
         {#<h1 style="color:white; font-size:75px; font-family: 'Barlow', sans-serif;">About Us</h1>#}
         {#<p style="color:black; font-size:20px; font-family: 'Barlow', sans-serif;">NER based resume ranking system</p>#}
-        <img src="/static/images/skillSync11.png" style="width:350px;">
+        <img src="{{ url_for('static', filename='images/skillSync11.png') }}" style="width:350px;">
     </div>
 </div>
 <div class="jumbotron">
@@ -55,7 +55,7 @@
     <div class="container">
         <div class="entry">
             <div class="image-box" onclick="toggleDescription1()">
-                <img src="/static/images/1.jpg" alt="Click to toggle">
+                <img src="{{ url_for('static', filename='images/SS.jpg') }}">
             </div>
             <div class="description-box-wrapper" id="descWrapper1">
                 <div class="description-box">
@@ -73,7 +73,7 @@
     
         <div class="entry">
             <div class="image-box" onclick="toggleDescription2()">
-                <img src="/static/images/2.jpg" alt="Click to toggle">
+                <img src="{{ url_for('static', filename='images/DP.jpg') }}">
             </div>
             <div class="description-box-wrapper" id="descWrapper2">
                 <div class="description-box">
@@ -91,7 +91,7 @@
     
         <div class="entry">
             <div class="image-box" onclick="toggleDescription3()">
-                <img src="/static/images/3.jpg" alt="Click to toggle">
+                <img src="{{ url_for('static', filename='images/AD.jpg') }}">
             </div>
             <div class="description-box-wrapper" id="descWrapper3">
                 <div class="description-box">
@@ -109,7 +109,7 @@
     
         <div class="entry">
             <div class="image-box" onclick="toggleDescription4()">
-                <img src="/static/images/4.jpg" alt="Click to toggle">
+                <img src="{{ url_for('static', filename='images/SA.jpg') }}">
             </div>
             <div class="description-box-wrapper" id="descWrapper4">
                 <div class="description-box">
