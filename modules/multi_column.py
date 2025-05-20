@@ -197,13 +197,13 @@ def column_boxes(page, footer_margin=50, header_margin=50, no_image_text=True):
     # blocks of text on page
     blocks = page.get_text(
         "dict",
-        flags=fitz.TEXTFLAGS_TEXT,
+        flags=0,
         clip=clip,
     )["blocks"]
 
     # Make block rectangles, ignoring non-horizontal text
     for b in blocks:
-        bbox = fitz.IRect(b["bbox"])  # bbox of the block
+        bbox = fitz.Rect(b["bbox"])  # bbox of the block
 
         # ignore text written upon images
         if no_image_text and in_bbox(bbox, img_bboxes):

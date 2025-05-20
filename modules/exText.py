@@ -26,6 +26,16 @@ def extract_text_from_pdf(file_path):
 
     return text.strip()
 
+# import pdfplumber
+
+# def extract_text_from_pdf(path):
+#     text = ""
+#     with pdfplumber.open(path) as pdf:
+#         for page in pdf.pages:
+#             text += page.extract_text()
+#     return text
+
+
 # def extract_text_from_docx(file_path):
 #     """Extracts text from a DOCX file using python-docx."""
 #     doc = docx.Document(file_path)
@@ -71,20 +81,19 @@ def extract_text_from_pdf(file_path):
 #         return f"An error occurred: {e}"
 
 def extract_text_from_docx(file_path):
-    """
-    Extracts clean, readable text from a DOCX file using the Mammoth library.
-
-    Parameters:
-    - file_path: str - Path to the .docx file
-
-    Returns:
-    - str - Extracted plain text
-    """
     try:
         with open(file_path, "rb") as docx_file:
             result = mammoth.extract_raw_text(docx_file)
-            print(result.value)
-            return result.value  # plain text
+            text = result.value
+            print(text)
+            import re
+            # text = re.sub(r'[\r\n]+', ' ', text)  # Replace newlines with space
+            # text = re.sub(r'\s+', ' ', text)      # Collapse multiple spaces
+            text = re.sub(r'(?<! )\n', ' \n', text) # Replaces with newlines with space
+            text = re.sub(r'\)(\S)', r') \1', text) # Put space after ")"
+            text = re.sub(r'(?<!\s)\(', r' (', text)
+            print(text)
+            return text.strip()  # plain text
     except Exception as e:
         return f"An error occurred: {e}"
 
