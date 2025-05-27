@@ -42,7 +42,7 @@ env/Scripts/activate
 python -m pip install --upgrade pip
 ```
 ```
-pip install - U flask
+pip install -U flask
 ```
 ```
 pip install -U werkzeug
@@ -54,16 +54,16 @@ pip install -U transformers
 pip install -U sentence-transformers
 ```
 ```
-pip install -U spacy
-```
-```
 pip install -U numpy
 ```
 ```
-pip install -U spacy-transformers
-```
-```
 pip install -U pymupdf
+```
+```
+pip install -U python-docx
+```
+```
+pip install -U mammoth
 ```
 ```
 pip install -U dateparser
@@ -73,6 +73,15 @@ pip install -U torch
 ```
 ```
 pip install -U thinc
+```
+```
+pip install -U spacy
+```
+```
+pip install -U spacy-transformers
+```
+```
+pip install spacy[transformers]
 ```
 > You can ignore the two commands below if you're planning to run the app without login with google feature
 ```
