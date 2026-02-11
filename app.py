@@ -6,6 +6,10 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
 from modules.exText import extract_text
 from modules.similarity.similarity import calculate_similarity
 from modules.features.exResFeats import exResFeats
@@ -15,7 +19,7 @@ from modules.features.displayJobFeats import displayJobFeats
 from modules.features.compJobFeats import compJobFeats
 from modules.features.compResFeats import compResFeats
 from functools import wraps
-from config import ADMINS
+# from config import ADMINS
 from flask import send_file
 import io
 
@@ -144,7 +148,7 @@ def adminLogin():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username in ADMINS and ADMINS[username] == password:
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
             session['admin_logged_in'] = True
             session['admin_username'] = username
             flash('Logged in successfully as admin.', 'success')
