@@ -106,7 +106,7 @@ Download the models from the link below and keep it in the assets folder of your
 
 <br>
 
-[NER Model Link](https://drive.google.com/drive/folders/1z_knxWITdAtcZWyIQwGgv-7BwuCEKEhO?usp=sharing)
+[NER Model Link](https://drive.google.com/file/d/1VqrdGojKGnHfhWgKICT6kw302hm0EBnJ/view?usp=sharing)
 
 <br>
 
